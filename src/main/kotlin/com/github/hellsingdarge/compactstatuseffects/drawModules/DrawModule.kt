@@ -12,7 +12,7 @@ abstract class DrawModule(
         protected val minecraft: MinecraftClient,
         protected val x: Int,
         protected val y: Int,
-        protected val offset: Int,
+        protected val yIncrement: Int,
         protected val effects: Iterable<StatusEffectInstance>
 ): DrawableHelper()
 {
