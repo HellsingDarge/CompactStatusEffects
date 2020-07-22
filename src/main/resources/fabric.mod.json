@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "compactstatuseffects",
+  "version": "${version}",
+  "name": "Compact Status Effects",
+  "description": "Reduced space consumption of status effects",
+  "authors": [
+    "HellsingDarge"
+  ],
+
+  "contact": {
+    "sources": "https://github.com/HellsingDarge/CompactStatusEffects",
+    "issues": "https://github.com/HellsingDarge/CompactStatusEffects/issues"
+  },
+
+  "license": "ISC",
+
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "com.github.hellsingdarge.compactstatuseffects.CompactStatusEffects"
+      }
+    ]
+  },
+
+  "mixins": [
+    "compactstatuseffects.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.1",
+    "fabric": "*",
+    "fabric-language-kotlin": ">=1.3.72",
+    "minecraft": "1.16.x"
+  }
+}
