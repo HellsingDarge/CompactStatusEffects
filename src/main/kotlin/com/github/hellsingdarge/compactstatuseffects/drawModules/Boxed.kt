@@ -11,7 +11,7 @@ class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int
 {
     private val xOffset = 35
     private val xIncrement = 30
-    private val yIncrement = 50
+    private val yIncrement = 41
     private val maxNum = 4
 
     override fun drawBackground()
@@ -22,11 +22,11 @@ class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int
 
         repeat(effects.count()) { index ->
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, j - 40, i, 0, 0, 31, 41)
+            drawTexture(matrixStack, j - xOffset, i, 0, 0, 31, 41)
 
             i += yIncrement
             j = x - ((index + 1) / maxNum) * xIncrement
-            if ((index + 1) % 4 == maxNum) i = y
+            if ((index + 1) % maxNum == 0) i = y
         }
     }
 
