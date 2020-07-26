@@ -25,12 +25,6 @@ public class AbstractInventoryScreenMixin<T extends ScreenHandler> extends Handl
     }
 
     @Overwrite
-    public void applyStatusEffectOffset()
-    {
-        drawStatusEffects = !client.player.getStatusEffects().isEmpty();
-    }
-
-    @Overwrite
     public void drawStatusEffects(MatrixStack matrixStack)
     {
         CustomEffectsDisplay customEffectsDisplay = new CustomEffectsDisplay(matrixStack, client, x, y, client.player.getStatusEffects());
