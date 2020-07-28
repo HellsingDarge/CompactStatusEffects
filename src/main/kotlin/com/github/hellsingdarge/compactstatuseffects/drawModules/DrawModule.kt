@@ -1,5 +1,7 @@
 package com.github.hellsingdarge.compactstatuseffects.drawModules
 
+import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.gui.DrawableHelper
@@ -16,6 +18,7 @@ abstract class DrawModule(
         protected val effects: Iterable<StatusEffectInstance>
 ): DrawableHelper()
 {
+    protected var modConfig: ModConfig = AutoConfig.getConfigHolder(ModConfig::class.java).config
     protected val spriteManager: StatusEffectSpriteManager = minecraft.statusEffectSpriteManager
     protected val fontRenderer: TextRenderer = minecraft.textRenderer
     protected val BACKGROUND_TEXTURE = Identifier("compactstatuseffects:textures/atlas.png")

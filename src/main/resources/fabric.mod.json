@@ -17,22 +17,34 @@
 
   "environment": "client",
   "entrypoints": {
-    "main": [
+    "client": [
       {
         "adapter": "kotlin",
         "value": "com.github.hellsingdarge.compactstatuseffects.CompactStatusEffects"
       }
+    ],
+  
+    "modmenu": [
+      {
+        "adapter": "kotlin",
+        "value": "com.github.hellsingdarge.compactstatuseffects.config.ModMenuIntegration"
+      }
     ]
   },
-
+  
   "mixins": [
     "compactstatuseffects.mixins.json"
   ],
-
+  
   "depends": {
-    "fabricloader": ">=0.7.1",
     "fabric": "*",
     "fabric-language-kotlin": ">=1.3.72",
+    "modmenu": ">=1.14.5",
+    "cloth-config2": ">=4.6.0",
     "minecraft": "1.16.x"
+  },
+  
+  "custom": {
+    "modmenu:clientSideOnly": true
   }
 }

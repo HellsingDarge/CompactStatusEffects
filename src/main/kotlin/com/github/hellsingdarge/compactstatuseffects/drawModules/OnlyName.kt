@@ -9,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffectInstance
 class OnlyName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
+    private val config = modConfig.onlyNameConfig
     private val xOffset = 100
     private val xIncrement = 99
     private val yIncrement = 19
@@ -40,19 +41,19 @@ class OnlyName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
             {
                 instance.isPermanent ->
                 {
-                    0xFFFFFF // white
+                    config.permanentColour // white
                 }
-                instance.duration < 400 ->
+                instance.duration < config.expiringBound * 20 ->
                 {
-                    0xD40000 // red
+                    config.expiringColour // red
                 }
-                instance.duration in 400..1200 ->
+                instance.duration in (config.expiringBound * 20)..(config.soonToExpireBound * 20) ->
                 {
-                    0xD4CD00 // yellow
+                    config.soonToExpireColour // yellow
                 }
                 else ->
                 {
-                    0x00B009 // green
+                    config.wontExpireSoonColour // green
                 }
             }
 

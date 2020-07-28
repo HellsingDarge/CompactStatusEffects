@@ -1,0 +1,18 @@
+{
+  "text.autoconfig.compactstatuseffects.title": "Compact Status Effects config",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig": "Only name display config",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.permanentColour": "Colour of an effect if it's permanent",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.wontExpireSoonColour": "Colour of an effect that won't expire soon",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireColour": "Colour of an effect that will soon expire",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringColour": "Colour of an effect that's expiring",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound": "Bound for expiring effect in seconds",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[0]": "Effect below this are considered expiring, above - soon to expire",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[1]": "effect duration < expiring bound",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound": "Bound for soon to expire effects in seconds",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[0]": "Effect below this are considered soon to expire, above - won't expire soon",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "expiring bound < effect duration < soonToExpireBound"
+}

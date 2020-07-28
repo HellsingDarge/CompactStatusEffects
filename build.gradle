@@ -19,9 +19,24 @@ dependencies {
 
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
+    modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
+    modImplementation("net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}")
+    modApi("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}") {
+        exclude(module: "fabric-api")
+    }
+    modApi("me.shedaniel.cloth:config-2:${project.cloth_version}") {
+        exclude(module: "fabric-api")
+    }
+    modCompileOnly("io.github.prospector:modmenu:${project.modmenu_version}") {
+        transitive(true)
+    }
+    modRuntime("io.github.prospector:modmenu:${project.modmenu_version}") {
+        transitive(false)
+    }
+
+    include("me.shedaniel.cloth:config-2:${project.cloth_version}")
+    include("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}")
 }
 
 processResources {
@@ -35,6 +50,17 @@ processResources {
     from(sourceSets.main.resources.srcDirs) {
         exclude "fabric.mod.json"
     }
+}
+
+task deleteOldLangFile(type: Delete) {
+    delete("${sourceSets.main.resources.srcDirs[0]}/assets/compactstatuseffects/lang/en_us.json")
+}
+
+task copyLangFile(type: Copy, dependsOn: deleteOldLangFile) {
+    from("${sourceSets.main.resources.srcDirs[0]}/assets/compactstatuseffects/lang/en_gb.json")
+    into("${sourceSets.main.resources.srcDirs[0]}/assets/compactstatuseffects/lang")
+    rename("en_gb", "en_us")
+
 }
 
 // ensure that the encoding is set to UTF-8, no matter what the system default is
@@ -55,5 +81,7 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 jar {
     from "LICENSE"
 }
+
+assemble.dependsOn(copyLangFile)
 
 compileKotlin.kotlinOptions.jvmTarget = "1.8"
