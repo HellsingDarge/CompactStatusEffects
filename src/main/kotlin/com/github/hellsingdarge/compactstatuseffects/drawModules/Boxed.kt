@@ -9,10 +9,11 @@ import net.minecraft.entity.effect.StatusEffectUtil
 class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
+    private val config = modConfig.boxedConfig
     private var xOffset = 40
     private var xIncrement = 30
     private var yIncrement = 41
-    private var maxNum = modConfig.boxedConfig.maxNumber
+    private var maxNum = config.maxEffectsNumber
 
     override fun drawBackground()
     {

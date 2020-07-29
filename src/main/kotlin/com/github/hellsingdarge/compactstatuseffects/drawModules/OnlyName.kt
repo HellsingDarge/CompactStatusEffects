@@ -13,7 +13,7 @@ class OnlyName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
     private val xOffset = 100
     private val xIncrement = 99
     private val yIncrement = 19
-    private val maxNum = 7
+    private val maxNum = config.maxEffectsNumber
 
     override fun drawBackground()
     {

@@ -1,12 +1,22 @@
 {
   "text.autoconfig.compactstatuseffects.title": "Compact Status Effects config",
   
+  "text.autoconfig.compactstatuseffects.option.module": "Effect display module to use",
+  
+  "text.autoconfig.compactstatuseffects.option.boxedConfig": "Boxed (no name) display config",
+  
+  "text.autoconfig.compactstatuseffects.option.boxedConfig.maxEffectsNumber": "Maximum number of effects that is displayed one 1 column",
+  "text.autoconfig.compactstatuseffects.option.boxedConfig.maxEffectsNumber.@Tooltip": "Control how many effects are displayed before new column in use",
+  
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig": "Only name display config",
   
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.permanentColour": "Colour of an effect if it's permanent",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber": "Maximum number of effects that is displayed one 1 column",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber.@Tooltip": "Control how many effects are displayed before new column in use",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.permanentColour": "Colour of a permanent effect",
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.wontExpireSoonColour": "Colour of an effect that won't expire soon",
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireColour": "Colour of an effect that will soon expire",
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringColour": "Colour of an effect that's expiring",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireColour": "Colour of soon expire effect",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringColour": "Colour of an expiring effect",
   
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound": "Bound for expiring effect in seconds",
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[0]": "Effect below this are considered expiring, above - soon to expire",
@@ -14,5 +24,10 @@
   
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound": "Bound for soon to expire effects in seconds",
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[0]": "Effect below this are considered soon to expire, above - won't expire soon",
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "expiring bound < effect duration < soonToExpireBound"
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "expiring bound < effect duration < soon to expire bound",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig": "No sprite display config",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber": "Maximum number of effects that is displayed one 1 column",
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber.@Tooltip": "Control how many effects are displayed before new column in use"
 }

@@ -10,10 +10,11 @@ import net.minecraft.entity.effect.StatusEffectUtil
 class NoSprite(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
+    private val config = modConfig.noSpriteConfig
     private val xOffset = 109
     private val xIncrement = 99
     private val yIncrement = 31
-    private val maxNum = 5
+    private val maxNum = config.maxEffectsNumber
 
     override fun drawBackground()
     {

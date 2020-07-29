@@ -3,7 +3,6 @@ package com.github.hellsingdarge.compactstatuseffects.config
 import me.sargunvohra.mcmods.autoconfig1u.ConfigData
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry
-import me.sargunvohra.mcmods.autoconfig1u.shadowed.blue.endless.jankson.Comment
 
 @Config(name = "compactstatuseffects")
 class ModConfig: ConfigData
@@ -11,13 +10,14 @@ class ModConfig: ConfigData
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     var module: Module = Module.BOXED
 
-    @ConfigEntry.Category("boxed_config")
-    @ConfigEntry.Gui.TransitiveObject
+    @ConfigEntry.Gui.CollapsibleObject
     val boxedConfig = BoxedConfig()
 
-    @ConfigEntry.Category("onlyname_config")
-    @ConfigEntry.Gui.TransitiveObject
+    @ConfigEntry.Gui.CollapsibleObject
     val onlyNameConfig = OnlyNameConfig()
+
+    @ConfigEntry.Gui.CollapsibleObject
+    val noSpriteConfig = NoSpriteConfig()
 
     enum class Module
     {
@@ -26,34 +26,46 @@ class ModConfig: ConfigData
         ONLYNAME,
     }
 
+    @Config(name = "module_nosprite")
+    class NoSpriteConfig: ConfigData
+    {
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
+        var maxEffectsNumber: Int = 5
+    }
+
     @Config(name = "module_boxed")
     class BoxedConfig: ConfigData
     {
-        @Comment("Maximum number of displayed effects before new column is added")
-        var maxNumber: Int = 4
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
+        var maxEffectsNumber: Int = 4
     }
 
     @Config(name = "module_onlyname")
     class OnlyNameConfig: ConfigData
     {
-        @ConfigEntry.ColorPicker
-        var permanentColour = 0xFFFFFF
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 15)
+        var maxEffectsNumber: Int = 8
 
         @ConfigEntry.ColorPicker
-        var wontExpireSoonColour = 0x00B009
+        var permanentColour: Int = 0xFFFFFF
 
         @ConfigEntry.ColorPicker
-        var soonToExpireColour = 0xD4CD00
+        var wontExpireSoonColour: Int = 0x00B009
 
         @ConfigEntry.ColorPicker
-        var expiringColour = 0xD40000
+        var soonToExpireColour: Int = 0xD4CD00
+
+        @ConfigEntry.ColorPicker
+        var expiringColour: Int = 0xD40000
 
         @ConfigEntry.Gui.Tooltip(count = 2)
         @ConfigEntry.BoundedDiscrete(min = 0, max = 5 * 60)
-        var expiringBound = 20
+        var expiringBound: Int = 20
 
         @ConfigEntry.Gui.Tooltip(count = 2)
         @ConfigEntry.BoundedDiscrete(min = 0, max = 10 * 60)
-        var soonToExpireBound = 60
+        var soonToExpireBound: Int = 60
     }
 }
