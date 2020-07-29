@@ -10,6 +10,7 @@
   "icon": "assets/compactstatuseffects/icon.png",
   
   "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/compact-status-effects",
     "sources": "https://github.com/HellsingDarge/CompactStatusEffects",
     "issues": "https://github.com/HellsingDarge/CompactStatusEffects/issues"
   },
