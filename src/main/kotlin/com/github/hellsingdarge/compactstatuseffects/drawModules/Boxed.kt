@@ -10,8 +10,8 @@ class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
     private val config = modConfig.boxedConfig
-    private var xOffset = 40
-    private var xIncrement = 30
+    private var xOffset = 46
+    private var xIncrement = 32
     private var yIncrement = 41
     private var maxNum = config.maxEffectsNumber
 
@@ -23,7 +23,7 @@ class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int
 
         repeat(effects.count()) { index ->
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, j - xOffset, i, 0, 0, 31, 41)
+            drawTexture(matrixStack, j - xOffset, i, 0, 0, 33, 41)
 
             i += yIncrement
             j = x - ((index + 1) / maxNum) * xIncrement
@@ -40,7 +40,7 @@ class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int
             val effect = instance.effectType
             val sprite = spriteManager.getSprite(effect)
             minecraft.textureManager.bindTexture(sprite.atlas.id)
-            drawSprite(matrixStack, j + 2 - xOffset, i + 7, zOffset, 18, 18, sprite)
+            drawSprite(matrixStack, j + 8 - xOffset, i + 7, zOffset, 18, 18, sprite)
 
             i += yIncrement
             j = x - ((index + 1) / maxNum) * xIncrement
@@ -59,17 +59,17 @@ class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int
             if (instance.isPermanent)
             {
                 // infinity symbol instead of "**:**"
-                fontRenderer.drawWithShadow(matrixStack, "\u221e", j - xOffset + 7f, i + 27f, 0x7F7F7F)
+                fontRenderer.drawWithShadow(matrixStack, "\u221e", j + 13f - xOffset, i + 27f, 0x7F7F7F)
             }
             else
             {
                 if (duration.length == 5)
                 {
-                    fontRenderer.drawWithShadow(matrixStack, duration, j - 2f - xOffset, i + 27f, 0x7F7F7F)
+                    fontRenderer.drawWithShadow(matrixStack, duration, j + 4f - xOffset, i + 27f, 0x7F7F7F)
                 }
                 else
                 {
-                    fontRenderer.drawWithShadow(matrixStack, duration, j + 1f - xOffset, i + 27f, 0x7F7F7F)
+                    fontRenderer.drawWithShadow(matrixStack, duration, j + 7f - xOffset, i + 27f, 0x7F7F7F)
                 }
             }
 
