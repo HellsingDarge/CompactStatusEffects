@@ -4,7 +4,6 @@ package com.github.hellsingdarge.compactstatuseffects.mixins;
 import com.github.hellsingdarge.compactstatuseffects.CustomEffectsDisplay;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
 
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -14,11 +13,8 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 
 @Mixin(AbstractInventoryScreen.class)
-public class AbstractInventoryScreenMixin<T extends ScreenHandler> extends HandledScreen<T>
+public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> extends HandledScreen<T>
 {
-    @Shadow
-    protected boolean drawStatusEffects;
-
     public AbstractInventoryScreenMixin(T handler, PlayerInventory inventory, Text title)
     {
         super(handler, inventory, title);
@@ -29,11 +25,5 @@ public class AbstractInventoryScreenMixin<T extends ScreenHandler> extends Handl
     {
         CustomEffectsDisplay customEffectsDisplay = new CustomEffectsDisplay(matrixStack, client, x, y, client.player.getStatusEffects());
         customEffectsDisplay.draw();
-    }
-
-    @Override
-    protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY)
-    {
-
     }
 }
