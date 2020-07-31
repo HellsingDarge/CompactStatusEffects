@@ -10,7 +10,7 @@ class OnlyName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
     private val config = modConfig.onlyNameConfig
-    private val xOffset = 100
+    private val xOffset = 110
     private val xIncrement = 99
     private val yIncrement = 19
     private val maxNum = config.maxEffectsNumber

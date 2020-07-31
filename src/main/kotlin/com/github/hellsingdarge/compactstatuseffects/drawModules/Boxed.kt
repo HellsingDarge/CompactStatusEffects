@@ -10,7 +10,7 @@ class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
     private val config = modConfig.boxedConfig
-    private var xOffset = 46
+    private var xOffset = 43
     private var xIncrement = 32
     private var yIncrement = 41
     private var maxNum = config.maxEffectsNumber
