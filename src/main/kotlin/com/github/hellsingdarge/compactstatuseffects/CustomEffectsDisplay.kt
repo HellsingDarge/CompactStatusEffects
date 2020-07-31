@@ -15,16 +15,16 @@ class CustomEffectsDisplay(
         private val minecraft: MinecraftClient,
         private val x: Int,
         private val y: Int,
-        private val statusEffects: MutableCollection<StatusEffectInstance>
+        private val statusEffects: Iterable<StatusEffectInstance>
 )
 {
     fun draw()
     {
         val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
         {
-            ModConfig.Module.BOXED -> Boxed(matrixStack, minecraft, x, y, statusEffects.asIterable())
-            ModConfig.Module.NOSPRITE -> NoSprite(matrixStack, minecraft, x, y, statusEffects.asIterable())
-            ModConfig.Module.ONLYNAME -> OnlyName(matrixStack, minecraft, x, y, statusEffects.asIterable())
+            ModConfig.Module.BOXED -> Boxed(matrixStack, minecraft, x, y, statusEffects)
+            ModConfig.Module.NOSPRITE -> NoSprite(matrixStack, minecraft, x, y, statusEffects)
+            ModConfig.Module.ONLYNAME -> OnlyName(matrixStack, minecraft, x, y, statusEffects)
         }
 
         mode.drawBackground()
