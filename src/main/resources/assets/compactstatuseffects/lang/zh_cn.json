@@ -19,12 +19,12 @@
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringColour": "即将消失的颜色",
   
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound": "“即将消失” 的界限 (秒)",
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[0]": "剩余时长小于这个数值的状态效果属于 “即将消失”, 大于这个数值的属于 “时长不足”",
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[1]": "( “即将消失” < 设置的界限 < “时长不足” )",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[0]": "“即将消失” < 此处设置的界限 < “时长不足”",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[1]": "( 剩余时长小于这个数值的状态效果属于 “即将消失”, 大于这个数值的属于 “时长不足” )",
   
   "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound": "“时长不足” 的界限 (秒)",
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[0]": "剩余时长小于这个数值的状态效果属于 “时长不足”, 大于这个数值的属于 “时长充足”",
-  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "( “时长不足” < 设置的界限 < “时长充足” )",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[0]": "“时长不足” < 此处设置的界限 < “时长充足”",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "( 剩余时长小于这个数值的状态效果属于 “时长不足”, 大于这个数值的属于 “时长充足” )",
   
   "text.autoconfig.compactstatuseffects.option.noSpriteConfig": "NOSPRITE 名称模式设置 (名称及具体时长)",
   
