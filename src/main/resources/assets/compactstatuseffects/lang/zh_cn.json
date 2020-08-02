@@ -1,0 +1,34 @@
+{
+  "text.autoconfig.compactstatuseffects.title": "迷你状态效果配置 (Compact Status Effects)",
+  
+  "text.autoconfig.compactstatuseffects.option.module": "状态效果的显示方式",
+  "text.autoconfig.compactstatuseffects.option.margin": "状态效果显示与 GUI 的间距",
+  
+  "text.autoconfig.compactstatuseffects.option.noNameConfig": "NONAME 无名称模式设置 (图标+具体时长)",
+  
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.maxEffectsNumber": "每列能显示多少个状态效果",
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.maxEffectsNumber.@Tooltip": "在启用新一列前能显示多少个状态效果",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig": "ONLYNAME 仅名称模式设置 (名称+粗略时长)",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber": "每列能显示多少个状态效果",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber.@Tooltip": "在启用新一列前能显示多少个状态效果",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.permanentColour": "永久状态效果的颜色",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.wontExpireSoonColour": "时长充足的颜色",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireColour": "时长不足的颜色",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringColour": "即将消失的颜色",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound": "“即将消失” 的界限 (秒)",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[0]": "“即将消失” < 此处设置的界限 < “时长不足”",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[1]": "( 剩余时长小于这个数值的状态效果属于 “即将消失”, 大于这个数值的属于 “时长不足” )",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound": "“时长不足” 的界限 (秒)",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[0]": "“时长不足” < 此处设置的界限 < “时长充足”",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "( 剩余时长小于这个数值的状态效果属于 “时长不足”, 大于这个数值的属于 “时长充足” )",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig": "NOSPRITE 无图标模式设置 (名称+具体时长)",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber": "每列能显示多少个状态效果",
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber.@Tooltip": "在启用新一列前能显示多少个状态效果"
+}
