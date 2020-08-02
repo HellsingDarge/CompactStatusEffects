@@ -8,7 +8,7 @@ import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry
 class ModConfig: ConfigData
 {
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
-    var module: Module = Module.BOXED
+    var module: Module = Module.NONAME
 
     @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
     var margin: Int = 10
@@ -24,7 +24,7 @@ class ModConfig: ConfigData
 
     enum class Module
     {
-        BOXED,
+        NONAME,
         NOSPRITE,
         ONLYNAME,
     }

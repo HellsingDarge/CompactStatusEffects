@@ -22,7 +22,7 @@ class CustomEffectsDisplay(
     {
         val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
         {
-            ModConfig.Module.BOXED -> NoName(matrixStack, minecraft, x, y, statusEffects)
+            ModConfig.Module.NONAME -> NoName(matrixStack, minecraft, x, y, statusEffects)
             ModConfig.Module.NOSPRITE -> NoSprite(matrixStack, minecraft, x, y, statusEffects)
             ModConfig.Module.ONLYNAME -> OnlyName(matrixStack, minecraft, x, y, statusEffects)
         }
