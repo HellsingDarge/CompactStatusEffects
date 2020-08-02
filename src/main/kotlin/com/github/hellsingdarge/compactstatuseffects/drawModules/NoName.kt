@@ -6,11 +6,11 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectUtil
 
-class Boxed(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
+class NoName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
-    private val config = modConfig.boxedConfig
-    private var xOffset = 43
+    private val config = modConfig.noNameConfig
+    private var xOffset = 32 + modConfig.margin
     private var xIncrement = 32
     private var yIncrement = 41
     private var maxNum = config.maxEffectsNumber

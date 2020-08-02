@@ -10,7 +10,7 @@ class OnlyName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
     private val config = modConfig.onlyNameConfig
-    private val xOffset = 110
+    private val xOffset = 99 + modConfig.margin
     private val xIncrement = 99
     private val yIncrement = 19
     private val maxNum = config.maxEffectsNumber
@@ -41,19 +41,19 @@ class OnlyName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
             {
                 instance.isPermanent ->
                 {
-                    config.permanentColour // white
+                    config.permanentColour
                 }
                 instance.duration < config.expiringBound * 20 ->
                 {
-                    config.expiringColour // red
+                    config.expiringColour
                 }
                 instance.duration in (config.expiringBound * 20)..(config.soonToExpireBound * 20) ->
                 {
-                    config.soonToExpireColour // yellow
+                    config.soonToExpireColour
                 }
                 else ->
                 {
-                    config.wontExpireSoonColour // green
+                    config.wontExpireSoonColour
                 }
             }
 

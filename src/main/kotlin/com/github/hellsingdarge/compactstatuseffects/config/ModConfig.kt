@@ -10,8 +10,11 @@ class ModConfig: ConfigData
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     var module: Module = Module.BOXED
 
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+    var margin: Int = 10
+
     @ConfigEntry.Gui.CollapsibleObject
-    val boxedConfig = BoxedConfig()
+    val noNameConfig = NoNameConfig()
 
     @ConfigEntry.Gui.CollapsibleObject
     val onlyNameConfig = OnlyNameConfig()
@@ -35,7 +38,7 @@ class ModConfig: ConfigData
     }
 
     @Config(name = "module_boxed")
-    class BoxedConfig: ConfigData
+    class NoNameConfig: ConfigData
     {
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)

@@ -11,7 +11,7 @@ class NoSprite(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
         DrawModule(matrixStack, minecraft, x, y, effects)
 {
     private val config = modConfig.noSpriteConfig
-    private val xOffset = 110
+    private val xOffset = 99 + modConfig.margin
     private val xIncrement = 99
     private val yIncrement = 31
     private val maxNum = config.maxEffectsNumber

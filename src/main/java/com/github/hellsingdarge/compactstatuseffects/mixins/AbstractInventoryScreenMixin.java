@@ -24,7 +24,6 @@ public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> exte
         super(handler, inventory, title);
     }
 
-
     @Redirect(method = "drawStatusEffects", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/AbstractInventoryScreen;drawStatusEffectBackgrounds(Lnet/minecraft/client/util/math/MatrixStack;IILjava/lang/Iterable;)V"))
     void drawBackground(AbstractInventoryScreen ais, MatrixStack matrixStack, int i, int j, Iterable<StatusEffectInstance> effects)
     {

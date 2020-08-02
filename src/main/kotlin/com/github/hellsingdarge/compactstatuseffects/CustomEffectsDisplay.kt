@@ -1,8 +1,8 @@
 package com.github.hellsingdarge.compactstatuseffects
 
 import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
-import com.github.hellsingdarge.compactstatuseffects.drawModules.Boxed
 import com.github.hellsingdarge.compactstatuseffects.drawModules.DrawModule
+import com.github.hellsingdarge.compactstatuseffects.drawModules.NoName
 import com.github.hellsingdarge.compactstatuseffects.drawModules.NoSprite
 import com.github.hellsingdarge.compactstatuseffects.drawModules.OnlyName
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
@@ -22,7 +22,7 @@ class CustomEffectsDisplay(
     {
         val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
         {
-            ModConfig.Module.BOXED -> Boxed(matrixStack, minecraft, x, y, statusEffects)
+            ModConfig.Module.BOXED -> NoName(matrixStack, minecraft, x, y, statusEffects)
             ModConfig.Module.NOSPRITE -> NoSprite(matrixStack, minecraft, x, y, statusEffects)
             ModConfig.Module.ONLYNAME -> OnlyName(matrixStack, minecraft, x, y, statusEffects)
         }
