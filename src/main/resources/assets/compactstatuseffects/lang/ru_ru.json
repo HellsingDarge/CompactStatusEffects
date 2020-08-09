@@ -1,0 +1,34 @@
+{
+  "text.autoconfig.compactstatuseffects.title": "Compact Status Effects конфиг",
+  
+  "text.autoconfig.compactstatuseffects.option.module": "Используемый модуль отображения Эффектов",
+  "text.autoconfig.compactstatuseffects.option.margin": "Дистанция между статусами эффектов и GUI",
+  
+  "text.autoconfig.compactstatuseffects.option.noNameConfig": "Конфиг отображения Без Имен",
+  
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.maxEffectsNumber": "Максимальное число эффектов в 1 столбце",
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.maxEffectsNumber.@Tooltip": "Управляет количеством эффектов, отображаемых перед использованием нового столбца",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig": "Конфиг отображения Только Имена",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber": "Максимальное число эффектов в 1 столбце",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber.@Tooltip": "Управляет количеством эффектов, отображаемых перед использованием нового столбца",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.permanentColour": "Цвет перманентного эффекта",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.wontExpireSoonColour": "Цвет эффекта, который не скоро закончится",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireColour": "Цвет скоро истекающего эффекта",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringColour": "Цвет истекающего эффекта",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound": "Граница для истекающего эффекта в секундах",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[0]": "Эффект ниже этого считается истекающим, выше - скоро истекающим",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[1]": "истекающий < граница < скороистекающий",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound": "Граница для скороистекающего эффекта в секундах",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[0]": "Эффект ниже этого считается скороистекающим, выше - не скоро заканчивающегося",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "скороистекающий < граница < не скоро заканчивающийся",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig": "Конфиг отображения Без Спрайтов",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber": "Максимальное число эффектов в 1 столбце",
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber.@Tooltip": "Управляет количеством эффектов, отображаемых перед использованием нового столбца"
+}
