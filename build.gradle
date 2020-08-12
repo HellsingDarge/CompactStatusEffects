@@ -34,9 +34,6 @@ dependencies {
     modRuntime("io.github.prospector:modmenu:${project.modmenu_version}") {
         transitive(false)
     }
-
-    include("me.shedaniel.cloth:config-2:${project.cloth_version}")
-    include("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}")
 }
 
 processResources {
