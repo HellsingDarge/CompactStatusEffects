@@ -37,9 +37,11 @@ class ModConfig: ConfigData
         var maxEffectsNumber: Int = 5
     }
 
-    @Config(name = "module_boxed")
+    @Config(name = "module_noname")
     class NoNameConfig: ConfigData
     {
+        var showLevel: Boolean = true
+
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         var maxEffectsNumber: Int = 4
