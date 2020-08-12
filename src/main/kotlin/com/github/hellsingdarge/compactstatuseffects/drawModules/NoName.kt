@@ -73,6 +73,9 @@ class NoName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: In
                 }
             }
 
+            val level = (instance.amplifier + 1).toString()
+            fontRenderer.drawWithShadow(matrixStack, level, j + 21f - xOffset, i + 18f, 0xFFFFFF)
+
             i += yIncrement
             j = x - ((index + 1) / maxNum) * xIncrement
             if ((index + 1) % maxNum == 0) i = y
