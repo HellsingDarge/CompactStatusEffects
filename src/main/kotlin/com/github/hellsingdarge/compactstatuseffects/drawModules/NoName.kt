@@ -59,28 +59,17 @@ class NoName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: In
             if (instance.isPermanent)
             {
                 // infinity symbol instead of "**:**"
-                fontRenderer.drawWithShadow(matrixStack, "\u221e", j + 13f - xOffset, i + 27f, 0x7F7F7F)
+                Util.drawCentreAlign(matrixStack, "\u221e", j + 13f - xOffset, i + 27f, 0x7F7F7F)
             }
             else
             {
-                if (duration.length == 5)
-                {
-                    fontRenderer.drawWithShadow(matrixStack, duration, j + 4f - xOffset, i + 27f, 0x7F7F7F)
-                }
-                else
-                {
-                    fontRenderer.drawWithShadow(matrixStack, duration, j + 7f - xOffset, i + 27f, 0x7F7F7F)
-                }
+                Util.drawCentreAlign(matrixStack, duration, j + 5f - xOffset, j + 27f, withShadow = true)
             }
 
             if (config.showLevel)
             {
                 val level = (instance.amplifier + 1).toString()
-                //fontRenderer.drawWithShadow(matrixStack, level, j + 21f - xOffset, i + 18f, 0xFFFFFF)
-                //fontRenderer.draw(level, j + 21f - xOffset, i + 18f, 0xFFFFFF)
-                Util.drawRightAlign(fontRenderer, matrixStack, "QWERTY", j + 5f - xOffset, i + 18f, true)
-                Util.drawRightAlign(fontRenderer, matrixStack, "QWERTY123", j + 5f - xOffset, i + 24f, true)
-                Util.drawRightAlign(fontRenderer, matrixStack, "QWERTY123456", j + 5f - xOffset, i + 30f, true)
+                Util.drawCentreAlign(matrixStack, level, j + 10f - xOffset, i + 18f, withShadow = true)
             }
 
             i += yIncrement

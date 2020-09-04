@@ -45,17 +45,17 @@ class NoSprite(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
                 effectName = effectName + ' ' + I18n.translate("enchantment.level." + (instance.amplifier + 1), *arrayOfNulls(0))
             }
 
-            fontRenderer.drawWithShadow(matrixStack, effectName, j + 6f - xOffset, (i + 6).toFloat(), 0xFFFFFF)
+            Util.drawLeftAlign(matrixStack, effectName, j + 5f - xOffset, i + 6f, 0xFFFFFF, true)
             val duration = StatusEffectUtil.durationToString(instance, 1.0f)
 
             if (instance.isPermanent)
             {
                 // infinity symbol instead of "**:**"
-                fontRenderer.drawWithShadow(matrixStack, "\u221e", j + 5f - xOffset, i + 16f, 0x7F7F7F)
+                Util.drawLeftAlign(matrixStack, "\u221e", j + 5f - xOffset, i + 16f, 0x7F7F7F, true)
             }
             else
             {
-                fontRenderer.drawWithShadow(matrixStack, duration, j + 5f - xOffset, i + 16f, 0x7F7F7F)
+                Util.drawLeftAlign(matrixStack, duration, j + 5f - xOffset, i + 16f, 0x7F7F7F, true)
             }
 
             i += yIncrement

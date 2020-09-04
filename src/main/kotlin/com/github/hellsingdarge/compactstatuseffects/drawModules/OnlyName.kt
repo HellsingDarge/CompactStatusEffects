@@ -64,7 +64,7 @@ class OnlyName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
                 effectName = effectName + ' ' + I18n.translate("enchantment.level.${instance.amplifier + 1}", *arrayOfNulls(0))
             }
 
-            fontRenderer.drawWithShadow(matrixStack, effectName, j + 5f - xOffset, i + 6f, colour)
+            Util.drawLeftAlign(matrixStack, effectName, j + 5f - xOffset, i + 6f, colour, true)
 
             i += yIncrement
             j = x - ((index + 1) / maxNum) * xIncrement
