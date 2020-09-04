@@ -1,6 +1,7 @@
 package com.github.hellsingdarge.compactstatuseffects.drawModules
 
 import com.mojang.blaze3d.systems.RenderSystem
+import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectUtil
@@ -58,17 +59,25 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
             if (instance.isPermanent)
             {
                 // infinity symbol instead of "**:**"
-                Util.drawCentreAlign(matrixStack, "\u221e", j + 13f - xOffset, i + 27f, 0x7F7F7F)
+                Util.drawCentreAlign(matrixStack, "\u221e", j + 17f - xOffset, i + 27f, 0x7F7F7F)
             }
             else
             {
-                Util.drawCentreAlign(matrixStack, duration, j + 5f - xOffset, j + 27f, withShadow = true)
+                Util.drawCentreAlign(matrixStack, duration, j + 17f - xOffset, i + 27f, 0x7F7F7F, true)
             }
 
-            if (config.showLevel)
+            if (config.showLevel && instance.amplifier in 1..9)
             {
-                val level = (instance.amplifier + 1).toString()
-                Util.drawCentreAlign(matrixStack, level, j + 10f - xOffset, i + 18f, withShadow = true)
+                val level: String = if (config.levelInArabic)
+                {
+                    (instance.amplifier + 1).toString()
+                }
+                else
+                {
+                    I18n.translate("enchantment.level." + (instance.amplifier + 1))
+                }
+
+                Util.drawRightAlign(matrixStack, level, j + 30f - xOffset, i + 18f, withShadow = true)
             }
 
             i += yIncrement

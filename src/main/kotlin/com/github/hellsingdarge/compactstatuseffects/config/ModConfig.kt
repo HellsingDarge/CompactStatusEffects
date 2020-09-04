@@ -41,6 +41,7 @@ class ModConfig: ConfigData
     class NoNameConfig: ConfigData
     {
         var showLevel: Boolean = true
+        var levelInArabic: Boolean = false
 
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
