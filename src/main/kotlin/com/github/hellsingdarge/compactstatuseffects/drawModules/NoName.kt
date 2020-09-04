@@ -76,7 +76,11 @@ class NoName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: In
             if (config.showLevel)
             {
                 val level = (instance.amplifier + 1).toString()
-                fontRenderer.drawWithShadow(matrixStack, level, j + 21f - xOffset, i + 18f, 0xFFFFFF)
+                //fontRenderer.drawWithShadow(matrixStack, level, j + 21f - xOffset, i + 18f, 0xFFFFFF)
+                //fontRenderer.draw(level, j + 21f - xOffset, i + 18f, 0xFFFFFF)
+                Util.drawRightAlign(fontRenderer, matrixStack, "QWERTY", j + 5f - xOffset, i + 18f, true)
+                Util.drawRightAlign(fontRenderer, matrixStack, "QWERTY123", j + 5f - xOffset, i + 24f, true)
+                Util.drawRightAlign(fontRenderer, matrixStack, "QWERTY123456", j + 5f - xOffset, i + 30f, true)
             }
 
             i += yIncrement
