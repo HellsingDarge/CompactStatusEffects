@@ -1,6 +1,7 @@
 package com.github.hellsingdarge.compactstatuseffects
 
 import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
+import com.github.hellsingdarge.compactstatuseffects.drawModules.DrawModule
 import com.github.hellsingdarge.compactstatuseffects.drawModules.Util
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
 import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer
@@ -21,6 +22,8 @@ class CompactStatusEffects: ClientModInitializer
 
         ClientLifecycleEvents.CLIENT_STARTED.register(ClientStarted { client: MinecraftClient ->
             Util.textRenderer = client.textRenderer
+            DrawModule.spriteManager = client.statusEffectSpriteManager
+            DrawModule.textureManager = client.textureManager
         })
     }
 }

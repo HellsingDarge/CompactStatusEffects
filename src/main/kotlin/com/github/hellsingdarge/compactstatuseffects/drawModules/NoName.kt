@@ -1,13 +1,12 @@
 package com.github.hellsingdarge.compactstatuseffects.drawModules
 
 import com.mojang.blaze3d.systems.RenderSystem
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectUtil
 
-class NoName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
-        DrawModule(matrixStack, minecraft, x, y, effects)
+class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
+        DrawModule(matrixStack, x, y, effects)
 {
     private val config = modConfig.noNameConfig
     private var xOffset = 32 + modConfig.margin
@@ -17,7 +16,7 @@ class NoName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: In
 
     override fun drawBackground()
     {
-        minecraft.textureManager.bindTexture(BACKGROUND_TEXTURE)
+        textureManager.bindTexture(BACKGROUND_TEXTURE)
         var i = y
         var j = x
 
@@ -39,7 +38,7 @@ class NoName(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: In
         effects.forEachIndexed { index, instance ->
             val effect = instance.effectType
             val sprite = spriteManager.getSprite(effect)
-            minecraft.textureManager.bindTexture(sprite.atlas.id)
+            textureManager.bindTexture(sprite.atlas.id)
             drawSprite(matrixStack, j + 8 - xOffset, i + 7, zOffset, 18, 18, sprite)
 
             i += yIncrement

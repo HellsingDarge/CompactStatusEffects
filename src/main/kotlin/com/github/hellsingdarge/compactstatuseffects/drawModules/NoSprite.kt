@@ -1,14 +1,13 @@
 package com.github.hellsingdarge.compactstatuseffects.drawModules
 
 import com.mojang.blaze3d.systems.RenderSystem
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffectUtil
 
-class NoSprite(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
-        DrawModule(matrixStack, minecraft, x, y, effects)
+class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
+        DrawModule(matrixStack, x, y, effects)
 {
     private val config = modConfig.noSpriteConfig
     private val xOffset = 99 + modConfig.margin
@@ -18,7 +17,7 @@ class NoSprite(matrixStack: MatrixStack, minecraft: MinecraftClient, x: Int, y: 
 
     override fun drawBackground()
     {
-        minecraft.textureManager.bindTexture(BACKGROUND_TEXTURE)
+        textureManager.bindTexture(BACKGROUND_TEXTURE)
         var i = y
         var j = x
 
