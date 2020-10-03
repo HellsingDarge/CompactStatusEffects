@@ -17,17 +17,17 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
 
     override fun drawBackground()
     {
-        textureManager.bindTexture(BACKGROUND_TEXTURE)
-        var i = y
-        var j = x
+        textureManager.bindTexture(backgroundTexture)
+        var i = x
+        var j = y
 
         repeat(effects.count()) { index ->
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, j - xOffset, i, 0, 60, 100, 31)
+            drawTexture(matrixStack, i - xOffset, j, 0, 60, 100, 31)
 
-            i += yIncrement
-            j = x - ((index + 1) / maxNum) * xIncrement
-            if ((index + 1) % maxNum == 0) i = y
+            i = x - ((index + 1) / maxNum) * xIncrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = y
         }
     }
 
@@ -49,8 +49,7 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
 
             if (instance.isPermanent)
             {
-                // infinity symbol instead of "**:**"
-                Util.drawLeftAlign(matrixStack, "\u221e", j + 5f - xOffset, i + 16f, 0x7F7F7F, true)
+                Util.drawLeftAlign(matrixStack, "∞", j + 5f - xOffset, i + 16f, 0x7F7F7F, true)
             }
             else
             {

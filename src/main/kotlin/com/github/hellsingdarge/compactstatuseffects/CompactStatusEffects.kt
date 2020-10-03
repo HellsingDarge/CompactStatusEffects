@@ -22,8 +22,7 @@ class CompactStatusEffects: ClientModInitializer
 
         ClientLifecycleEvents.CLIENT_STARTED.register(ClientStarted { client: MinecraftClient ->
             Util.textRenderer = client.textRenderer
-            DrawModule.spriteManager = client.statusEffectSpriteManager
-            DrawModule.textureManager = client.textureManager
+            DrawModule.mc = client
         })
     }
 }

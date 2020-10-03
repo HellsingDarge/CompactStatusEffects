@@ -16,17 +16,17 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
 
     override fun drawBackground()
     {
-        textureManager.bindTexture(BACKGROUND_TEXTURE)
-        var i = y
-        var j = x
+        textureManager.bindTexture(backgroundTexture)
+        var i = x
+        var j = y
 
         repeat(effects.count()) { index ->
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, j - xOffset, i, 0, 41, 100, 19)
+            drawTexture(matrixStack, i - xOffset, j, 0, 41, 100, 19)
 
-            i += yIncrement
-            j = x - ((index + 1) / maxNum) * xIncrement
-            if ((index + 1) % maxNum == 0) i = y
+            i = x - ((index + 1) / maxNum) * xIncrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = y
         }
     }
 

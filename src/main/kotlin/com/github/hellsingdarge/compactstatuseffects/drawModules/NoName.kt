@@ -10,24 +10,24 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
         DrawModule(matrixStack, x, y, effects)
 {
     private val config = modConfig.noNameConfig
-    private var xOffset = 32 + modConfig.margin
-    private var xIncrement = 32
-    private var yIncrement = 41
-    private var maxNum = config.maxEffectsNumber
+    private val xOffset = 32 + modConfig.margin
+    private val xIncrement = 32
+    private val yIncrement = 41
+    private val maxNum = config.maxEffectsNumber
 
     override fun drawBackground()
     {
-        textureManager.bindTexture(BACKGROUND_TEXTURE)
-        var i = y
-        var j = x
+        textureManager.bindTexture(backgroundTexture)
+        var i = x
+        var j = y
 
         repeat(effects.count()) { index ->
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, j - xOffset, i, 0, 0, 33, 41)
+            drawTexture(matrixStack, i - xOffset, j, 0, 0, 33, 41)
 
-            i += yIncrement
-            j = x - ((index + 1) / maxNum) * xIncrement
-            if ((index + 1) % maxNum == 0) i = y
+            i = x - ((index + 1) / maxNum) * xIncrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = y
         }
     }
 
@@ -58,8 +58,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
 
             if (instance.isPermanent)
             {
-                // infinity symbol instead of "**:**"
-                Util.drawCentreAlign(matrixStack, "\u221e", j + 17f - xOffset, i + 27f, 0x7F7F7F)
+                Util.drawCentreAlign(matrixStack, "∞", j + 17f - xOffset, i + 27f, 0x7F7F7F)
             }
             else
             {

@@ -2,6 +2,7 @@ package com.github.hellsingdarge.compactstatuseffects.drawModules
 
 import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.texture.StatusEffectSpriteManager
 import net.minecraft.client.texture.TextureManager
@@ -17,6 +18,9 @@ abstract class DrawModule(
 ): DrawableHelper()
 {
     protected var modConfig: ModConfig = AutoConfig.getConfigHolder(ModConfig::class.java).config
+    protected val backgroundTexture = Identifier("compactstatuseffects:textures/atlas.png")
+    protected val spriteManager: StatusEffectSpriteManager = mc.statusEffectSpriteManager
+    protected val textureManager: TextureManager = mc.textureManager
 
     open fun drawBackground() {}
     open fun drawSprite() {}
@@ -24,9 +28,6 @@ abstract class DrawModule(
 
     companion object
     {
-        @JvmStatic
-        protected val BACKGROUND_TEXTURE = Identifier("compactstatuseffects:textures/atlas.png")
-        lateinit var spriteManager: StatusEffectSpriteManager
-        lateinit var textureManager: TextureManager
+        lateinit var mc: MinecraftClient
     }
 }
