@@ -22,12 +22,19 @@ jobs:
   "java-8":
     docker:
       - image: circleci/openjdk:8-jdk
+        auth:
+          username: $DOCKERHUB_ID
+          password: $DOCKERHUB_PASS
+
     steps:
       - compile_project
 
   "java-11":
     docker:
       - image: circleci/openjdk:11-jdk
+        auth:
+          username: $DOCKERHUB_ID
+          password: $DOCKERHUB_PASS
     steps:
       - compile_project
 
@@ -36,5 +43,7 @@ workflows:
   version: 2.1
   build:
     jobs:
-      - "java-8"
-      - "java-11"
+      - "java-8":
+          context: dockerhub
+      - "java-11":
+          context: dockerhub
