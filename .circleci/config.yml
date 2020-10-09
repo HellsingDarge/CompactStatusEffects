@@ -9,14 +9,14 @@ commands:
             - v1-dependencies-{{ checksum "build.gradle.kts" }}
             - v1-dependencies-
 
-      - run: gradle dependencies
+      - run: ./gradlew dependencies
 
       - save_cache:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
-      - run: gradle build
+      - run: ./gradlew build
 
 jobs:
   "java-8":

@@ -83,8 +83,8 @@ val sourceSet = the<SourceSetContainer>()
 tasks.register("createUSLang") {
     doFirst {
         val langFiles = sourceSet["main"].resources.filter { "lang" in it.absolutePath }.files
-        val enUS = langFiles.first { it.name == "en_us.json" }
         val enGB = langFiles.first { it.name == "en_gb.json" }
+        val enUS = langFiles.firstOrNull { it.name == "en_us.json" } ?: File(enGB.parent, "en_us.json")
         enGB.copyTo(enUS, true)
     }
 }
