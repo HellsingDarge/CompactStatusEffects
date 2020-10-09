@@ -33,8 +33,8 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
 
     override fun drawDescription()
     {
-        var i = y
-        var j = x
+        var i = x
+        var j = y
 
         effects.forEachIndexed { index, instance ->
             var effectName = I18n.translate(instance.effectType.translationKey, *arrayOfNulls(0))
@@ -44,21 +44,21 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
                 effectName = effectName + ' ' + I18n.translate("enchantment.level." + (instance.amplifier + 1), *arrayOfNulls(0))
             }
 
-            Util.drawLeftAlign(matrixStack, effectName, j + 5f - xOffset, i + 6f, 0xFFFFFF, true)
+            Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 6f, 0xFFFFFF, true)
             val duration = StatusEffectUtil.durationToString(instance, 1.0f)
 
             if (instance.isPermanent)
             {
-                Util.drawLeftAlign(matrixStack, "∞", j + 5f - xOffset, i + 16f, 0x7F7F7F, true)
+                Util.drawLeftAlign(matrixStack, "∞", i + 5f - xOffset, j + 16f, 0x7F7F7F, true)
             }
             else
             {
-                Util.drawLeftAlign(matrixStack, duration, j + 5f - xOffset, i + 16f, 0x7F7F7F, true)
+                Util.drawLeftAlign(matrixStack, duration, i + 5f - xOffset, j + 16f, 0x7F7F7F, true)
             }
 
-            i += yIncrement
-            j = x - ((index + 1) / maxNum) * xIncrement
-            if ((index + 1) % maxNum == 0) i = y
+            i = x - ((index + 1) / maxNum) * xIncrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = y
         }
     }
 }

@@ -61,7 +61,6 @@ tasks.getByName<ProcessResources>("processResources") {
                "version" to project.version
             )
         )
-        println("Done populating")
     }
 }
 

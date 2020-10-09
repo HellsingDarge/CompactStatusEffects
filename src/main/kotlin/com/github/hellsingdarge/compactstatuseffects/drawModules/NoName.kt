@@ -42,27 +42,27 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
             textureManager.bindTexture(sprite.atlas.id)
             drawSprite(matrixStack, j + 8 - xOffset, i + 7, zOffset, 18, 18, sprite)
 
-            i += yIncrement
             j = x - ((index + 1) / maxNum) * xIncrement
+            i += yIncrement
             if ((index + 1) % maxNum == 0) i = y
         }
     }
 
     override fun drawDescription()
     {
-        var i = y
-        var j = x
+        var i = x
+        var j = y
 
         effects.forEachIndexed { index, instance ->
             val duration = StatusEffectUtil.durationToString(instance, 1.0f)
 
             if (instance.isPermanent)
             {
-                Util.drawCentreAlign(matrixStack, "∞", j + 17f - xOffset, i + 27f, 0x7F7F7F)
+                Util.drawCentreAlign(matrixStack, "∞", i + 17f - xOffset, j + 27f, 0x7F7F7F)
             }
             else
             {
-                Util.drawCentreAlign(matrixStack, duration, j + 17f - xOffset, i + 27f, 0x7F7F7F, true)
+                Util.drawCentreAlign(matrixStack, duration, i + 17f - xOffset, j + 27f, 0x7F7F7F, true)
             }
 
             if (config.showLevel && instance.amplifier in 1..9)
@@ -76,12 +76,12 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
                     I18n.translate("enchantment.level." + (instance.amplifier + 1))
                 }
 
-                Util.drawRightAlign(matrixStack, level, j + 30f - xOffset, i + 18f, withShadow = true)
+                Util.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 18f, withShadow = true)
             }
 
-            i += yIncrement
-            j = x - ((index + 1) / maxNum) * xIncrement
-            if ((index + 1) % maxNum == 0) i = y
+            i = x - ((index + 1) / maxNum) * xIncrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = y
         }
     }
 }

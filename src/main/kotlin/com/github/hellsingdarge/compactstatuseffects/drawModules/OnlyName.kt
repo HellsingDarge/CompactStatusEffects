@@ -32,8 +32,8 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
 
     override fun drawDescription()
     {
-        var i = y
-        var j = x
+        var i = x
+        var j = y
 
         effects.forEachIndexed { index, instance ->
             val colour = when
@@ -63,11 +63,11 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
                 effectName = effectName + ' ' + I18n.translate("enchantment.level.${instance.amplifier + 1}", *arrayOfNulls(0))
             }
 
-            Util.drawLeftAlign(matrixStack, effectName, j + 5f - xOffset, i + 6f, colour, true)
+            Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 6f, colour, true)
 
-            i += yIncrement
-            j = x - ((index + 1) / maxNum) * xIncrement
-            if ((index + 1) % maxNum == 0) i = y
+            i = x - ((index + 1) / maxNum) * xIncrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = y
         }
     }
 }
