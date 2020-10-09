@@ -39,11 +39,11 @@
   ],
   
   "depends": {
-    "fabric": ">=0.16.2",
+    "fabric-lifecycle-events-v1": ">=0.16.2",
     "fabric-language-kotlin": ">=1.3.72",
     "cloth-config2": ">=4.6.0",
     "autoconfig1u": ">=3.2.0-unstable",
-    "minecraft": "1.16.x"
+    "minecraft": ">=1.16.1"
   },
   
   "suggests": {
