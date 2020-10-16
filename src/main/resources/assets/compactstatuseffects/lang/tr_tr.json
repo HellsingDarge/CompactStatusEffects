@@ -1,0 +1,37 @@
+{
+  "text.autoconfig.compactstatuseffects.title": "Compact Status Effects Ayarları",
+  
+  "text.autoconfig.compactstatuseffects.option.module": "Kullanılacak görüntüleme modülü",
+  "text.autoconfig.compactstatuseffects.option.margin": "Durum efektleriyle arayüz arasındaki mesafe",
+  
+  "text.autoconfig.compactstatuseffects.option.noNameConfig": "No name (İsimsiz) Görüntüleme Ayarları",
+  
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.showLevel": "Etkinin seviyesini göster",
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.levelInArabic": "Seviyeyi Arap rakamı olarak göster.",
+  
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.maxEffectsNumber": "Sütun içindeki maksimum etki sayısı",
+  "text.autoconfig.compactstatuseffects.option.noNameConfig.maxEffectsNumber.@Tooltip": "Yeni sütuna kaymadan önce kaç tane etkinin yerleşeceğini belirler",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig": "Only name (Sadece İsim) Görüntüleme Ayarları",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber": "Sütun içindeki maksimum etki sayısı",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.maxEffectsNumber.@Tooltip": "Yeni sütuna kaymadan önce kaç tane etkinin yerleşeceğini belirler",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.permanentColour": "Kalıcı etkinin rengi",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.wontExpireSoonColour": "Hemen bitmeyecek bir etkinin rengi",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireColour": "Bitmek üzere olan bir etkinin rengi",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringColour": "Kaybolan etkinin rengi",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound": "Kaybolan etkiye kalan saniye",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[0]": "Bunun altındayken efekt kaybolan sayılır, üstündeyse kaybolmak üzere.",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.expiringBound.@Tooltip[1]": "kaybolan < saniye < kaybolmak üzere",
+  
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound": "Kaybolmak üzere olan etkiye kalan saniye",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[0]": "Bunun altındayken efekt kaybolmak üzere sayılır, üstündeyse hemen bitmeyecek sayılır",
+  "text.autoconfig.compactstatuseffects.option.onlyNameConfig.soonToExpireBound.@Tooltip[1]": "kaybolmak üzere < saniye < hemen bitmeyecek",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig": "No sprite (Simgesiz) Görüntüleme Ayarları",
+  
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber": "Sütun içindeki maksimum etki sayısı",
+  "text.autoconfig.compactstatuseffects.option.noSpriteConfig.maxEffectsNumber.@Tooltip": "Yeni sütuna kaymadan önce kaç tane etkinin yerleşeceğini belirler"
+}
