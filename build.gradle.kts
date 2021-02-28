@@ -22,7 +22,7 @@ version = modVersion
 repositories {
     maven(url = "https://maven.fabricmc.net/")
     maven(url = "https://maven.terraformersmc.com/releases")
-    jcenter()
+    maven(url = "https://maven.shedaniel.me/")
 }
 
 dependencies {
@@ -48,10 +48,7 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
 
-    modApi("me.sargunvohra.mcmods:autoconfig1u:$autoconfigVersion") {
-        exclude(module = "fabric-api")
-    }
-    modApi("me.shedaniel.cloth:config-2:$clothVersion") {
+    modApi("me.shedaniel.cloth:cloth-config-fabric:$clothVersion") {
         exclude(module = "fabric-api")
     }
     modCompileOnly("com.terraformersmc:modmenu:$modmenuVersion")

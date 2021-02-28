@@ -3,8 +3,8 @@ package com.github.hellsingdarge.compactstatuseffects
 import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
 import com.github.hellsingdarge.compactstatuseffects.drawModules.DrawModule
 import com.github.hellsingdarge.compactstatuseffects.drawModules.Util
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
-import me.sargunvohra.mcmods.autoconfig1u.serializer.Toml4jConfigSerializer
+import me.shedaniel.autoconfig.AutoConfig
+import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment

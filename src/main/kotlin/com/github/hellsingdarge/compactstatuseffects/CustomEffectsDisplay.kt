@@ -5,7 +5,7 @@ import com.github.hellsingdarge.compactstatuseffects.drawModules.DrawModule
 import com.github.hellsingdarge.compactstatuseffects.drawModules.NoName
 import com.github.hellsingdarge.compactstatuseffects.drawModules.NoSprite
 import com.github.hellsingdarge.compactstatuseffects.drawModules.OnlyName
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
+import me.shedaniel.autoconfig.AutoConfig
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 

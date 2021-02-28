@@ -1,7 +1,7 @@
 package com.github.hellsingdarge.compactstatuseffects.drawModules
 
 import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig
+import me.shedaniel.autoconfig.AutoConfig
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.texture.StatusEffectSpriteManager
