@@ -8,51 +8,50 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry
 class ModConfig: ConfigData
 {
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
-    var module: Module = Module.NONAME
-
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
-    var margin: Int = 10
+    var module: Module = Module.NO_NAME
 
     @ConfigEntry.Gui.CollapsibleObject
-    val noNameConfig = NoNameConfig()
+    val noName = NoNameConfig()
 
     @ConfigEntry.Gui.CollapsibleObject
-    val onlyNameConfig = OnlyNameConfig()
+    val onlyName = OnlyNameConfig()
 
     @ConfigEntry.Gui.CollapsibleObject
-    val noSpriteConfig = NoSpriteConfig()
+    val noSprite = NoSpriteConfig()
 
-    enum class Module
-    {
-        NONAME,
-        NOSPRITE,
-        ONLYNAME,
+    enum class Module {
+        NO_NAME,
+        NO_SPRITE,
+        ONLY_NAME,
     }
 
-    @Config(name = "module_nosprite")
-    class NoSpriteConfig: ConfigData
-    {
+    class NoSpriteConfig : ConfigData, IConfigCommon {
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+        override var margin: Int = 10
+
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        var maxEffectsNumber: Int = 5
+        override var effectsPerColumn: Int = 5
     }
 
-    @Config(name = "module_noname")
-    class NoNameConfig: ConfigData
-    {
+    class NoNameConfig : ConfigData, IConfigCommon {
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+        override var margin: Int = 10
+
+        @ConfigEntry.Gui.Tooltip
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
+        override var effectsPerColumn: Int = 4
+
         var showLevel: Boolean = true
         var levelInArabic: Boolean = false
-
-        @ConfigEntry.Gui.Tooltip
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        var maxEffectsNumber: Int = 4
     }
 
-    @Config(name = "module_onlyname")
-    class OnlyNameConfig: ConfigData
-    {
+    class OnlyNameConfig : ConfigData, IConfigCommon {
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+        override var margin: Int = 10
+
         @ConfigEntry.BoundedDiscrete(min = 1, max = 15)
-        var maxEffectsNumber: Int = 8
+        override var effectsPerColumn: Int = 8
 
         @ConfigEntry.ColorPicker
         var permanentColour: Int = 0xFFFFFF

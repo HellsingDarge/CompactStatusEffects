@@ -9,14 +9,13 @@ import net.minecraft.entity.effect.StatusEffectUtil
 class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, x, y, effects)
 {
-    private val config = modConfig.noNameConfig
-    private val xOffset = 32 + modConfig.margin
+    private val config = modConfig.noName
+    private val xOffset = 32 + config.margin
     private val xIncrement = 32
     private val yIncrement = 41
-    private val maxNum = config.maxEffectsNumber
+    private val maxNum = config.effectsPerColumn
 
-    override fun drawBackground()
-    {
+    override fun drawBackground() {
         textureManager.bindTexture(backgroundTexture)
         var i = x
         var j = y

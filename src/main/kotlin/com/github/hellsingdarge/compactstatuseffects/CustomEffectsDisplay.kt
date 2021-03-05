@@ -18,11 +18,10 @@ class CustomEffectsDisplay(
 {
     fun draw()
     {
-        val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
-        {
-            ModConfig.Module.NONAME -> NoName(matrixStack, x, y, statusEffects)
-            ModConfig.Module.NOSPRITE -> NoSprite(matrixStack, x, y, statusEffects)
-            ModConfig.Module.ONLYNAME -> OnlyName(matrixStack, x, y, statusEffects)
+        val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module) {
+            ModConfig.Module.NO_NAME -> NoName(matrixStack, x, y, statusEffects)
+            ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, x, y, statusEffects)
+            ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, x, y, statusEffects)
         }
 
         mode.drawBackground()

@@ -31,7 +31,6 @@ dependencies {
     val yarnMappings: String by project
     val loaderVersion: String by project
     val fabricKotlinVersion: String by project
-    val autoconfigVersion: String by project
     val clothVersion: String by project
     val modmenuVersion: String by project
 
@@ -40,19 +39,15 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
 
-    setOf(
-        "fabric-lifecycle-events-v1"
-    ).forEach {
+    setOf("fabric-lifecycle-events-v1").forEach {
         modImplementation(fabricApi.module(it, fabricVersion))
     }
 
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
-
+    modImplementation("com.terraformersmc:modmenu:$modmenuVersion")
     modApi("me.shedaniel.cloth:cloth-config-fabric:$clothVersion") {
-        exclude(module = "fabric-api")
+        exclude(module = "net.fabricmc.fabric-api")
     }
-    modCompileOnly("com.terraformersmc:modmenu:$modmenuVersion")
-    modRuntime("com.terraformersmc:modmenu:$modmenuVersion")
 }
 
 tasks.getByName<ProcessResources>("processResources") {
