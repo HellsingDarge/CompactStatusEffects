@@ -1,10 +1,10 @@
-package com.github.hellsingdarge.compactstatuseffects
+package me.hellsingdarge.compactstatuseffects
 
-import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
-import com.github.hellsingdarge.compactstatuseffects.drawModules.DrawModule
-import com.github.hellsingdarge.compactstatuseffects.drawModules.NoName
-import com.github.hellsingdarge.compactstatuseffects.drawModules.NoSprite
-import com.github.hellsingdarge.compactstatuseffects.drawModules.OnlyName
+import me.hellsingdarge.compactstatuseffects.config.ModConfig
+import me.hellsingdarge.compactstatuseffects.modules.DrawModule
+import me.hellsingdarge.compactstatuseffects.modules.NoName
+import me.hellsingdarge.compactstatuseffects.modules.NoSprite
+import me.hellsingdarge.compactstatuseffects.modules.OnlyName
 import me.shedaniel.autoconfig.AutoConfig
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
@@ -18,7 +18,8 @@ class CustomEffectsDisplay(
 {
     fun draw()
     {
-        val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module) {
+        val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
+        {
             ModConfig.Module.NO_NAME -> NoName(matrixStack, x, y, statusEffects)
             ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, x, y, statusEffects)
             ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, x, y, statusEffects)

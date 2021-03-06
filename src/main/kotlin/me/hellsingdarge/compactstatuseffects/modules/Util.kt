@@ -1,4 +1,4 @@
-package com.github.hellsingdarge.compactstatuseffects.drawModules
+package me.hellsingdarge.compactstatuseffects.modules
 
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.render.Tessellator
@@ -43,7 +43,7 @@ object Util
                 vertexConsumer,
                 false,
                 0,
-                0XF000F0,
+                0xF000F0,
                 textRenderer.isRightToLeft
         )
         vertexConsumer.draw()

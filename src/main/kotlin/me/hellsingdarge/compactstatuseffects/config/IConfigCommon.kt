@@ -1,4 +1,4 @@
-package com.github.hellsingdarge.compactstatuseffects.config
+package me.hellsingdarge.compactstatuseffects.config
 
 interface IConfigCommon {
     var uiOffset: Int

@@ -67,7 +67,7 @@ tasks.withType<JavaCompile> {
 }
 
 tasks.getByName<Jar>("jar") {
-    from("LICENSE")
+    from("LICENCE")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {

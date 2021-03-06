@@ -1,8 +1,8 @@
-package com.github.hellsingdarge.compactstatuseffects.mixins;
+package me.hellsingdarge.compactstatuseffects.mixins;
 
 
-import com.github.hellsingdarge.compactstatuseffects.CustomEffectsDisplay;
-import com.github.hellsingdarge.compactstatuseffects.config.ModConfig;
+import me.hellsingdarge.compactstatuseffects.CustomEffectsDisplay;
+import me.hellsingdarge.compactstatuseffects.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

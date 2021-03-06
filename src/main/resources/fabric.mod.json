@@ -22,14 +22,14 @@
     "client": [
       {
         "adapter": "kotlin",
-        "value": "com.github.hellsingdarge.compactstatuseffects.CompactStatusEffects"
+        "value": "me.hellsingdarge.compactstatuseffects.CompactStatusEffects"
       }
     ],
   
     "modmenu": [
       {
         "adapter": "kotlin",
-        "value": "com.github.hellsingdarge.compactstatuseffects.config.ModMenuIntegration"
+        "value": "me.hellsingdarge.compactstatuseffects.config.ModMenuIntegration"
       }
     ]
   },

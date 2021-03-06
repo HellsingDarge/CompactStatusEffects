@@ -1,4 +1,4 @@
-package com.github.hellsingdarge.compactstatuseffects.drawModules
+package me.hellsingdarge.compactstatuseffects.modules
 
 import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.resource.language.I18n
@@ -9,13 +9,14 @@ import net.minecraft.entity.effect.StatusEffectUtil
 class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, x, y, effects)
 {
-    private val config = modConfig.noName
-    private val xOffset = 32 + config.margin
-    private val xIncrement = 32
-    private val yIncrement = 41
-    private val maxNum = config.effectsPerColumn
+    override val config = modConfig.noName
+    override val xOffset = 32 + config.margin
+    override val xIncrement = 32
+    override val yIncrement = 41
+    override val maxNum = config.effectsPerColumn
 
-    override fun drawBackground() {
+    override fun drawBackground()
+    {
         textureManager.bindTexture(backgroundTexture)
         var i = x
         var j = y

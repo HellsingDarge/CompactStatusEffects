@@ -1,8 +1,8 @@
-package com.github.hellsingdarge.compactstatuseffects
+package me.hellsingdarge.compactstatuseffects
 
-import com.github.hellsingdarge.compactstatuseffects.config.ModConfig
-import com.github.hellsingdarge.compactstatuseffects.drawModules.DrawModule
-import com.github.hellsingdarge.compactstatuseffects.drawModules.Util
+import me.hellsingdarge.compactstatuseffects.config.ModConfig
+import me.hellsingdarge.compactstatuseffects.modules.DrawModule
+import me.hellsingdarge.compactstatuseffects.modules.Util
 import me.shedaniel.autoconfig.AutoConfig
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer
 import net.fabricmc.api.ClientModInitializer

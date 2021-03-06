@@ -1,4 +1,4 @@
-package com.github.hellsingdarge.compactstatuseffects.config
+package me.hellsingdarge.compactstatuseffects.config
 
 import me.shedaniel.autoconfig.ConfigData
 import me.shedaniel.autoconfig.annotation.Config
@@ -19,13 +19,15 @@ class ModConfig: ConfigData
     @ConfigEntry.Gui.CollapsibleObject
     val noSprite = NoSpriteConfig()
 
-    enum class Module {
+    enum class Module
+    {
         NO_NAME,
         NO_SPRITE,
         ONLY_NAME,
     }
 
-    class NoSpriteConfig : ConfigData, IConfigCommon {
+    class NoSpriteConfig: ConfigData, IConfigCommon
+    {
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
         override var uiOffset: Int = 0
 
@@ -37,7 +39,8 @@ class ModConfig: ConfigData
         override var effectsPerColumn: Int = 5
     }
 
-    class NoNameConfig : ConfigData, IConfigCommon {
+    class NoNameConfig: ConfigData, IConfigCommon
+    {
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
         override var uiOffset: Int = 0
 
@@ -52,7 +55,8 @@ class ModConfig: ConfigData
         var levelInArabic: Boolean = false
     }
 
-    class OnlyNameConfig : ConfigData, IConfigCommon {
+    class OnlyNameConfig: ConfigData, IConfigCommon
+    {
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
         override var uiOffset: Int = 0
 
