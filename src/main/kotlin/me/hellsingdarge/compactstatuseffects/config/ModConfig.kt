@@ -35,6 +35,9 @@ class ModConfig: ConfigData
         override var margin: Int = 10
 
         @ConfigEntry.Gui.Tooltip
+        override var squash: Boolean = false
+
+        @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         override var effectsPerColumn: Int = 5
     }
@@ -46,6 +49,9 @@ class ModConfig: ConfigData
 
         @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
         override var margin: Int = 10
+
+        @ConfigEntry.Gui.Tooltip
+        override var squash: Boolean = false
 
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
@@ -65,6 +71,9 @@ class ModConfig: ConfigData
 
         @ConfigEntry.BoundedDiscrete(min = 1, max = 15)
         override var effectsPerColumn: Int = 8
+
+        @ConfigEntry.Gui.Tooltip
+        override var squash: Boolean = false
 
         @ConfigEntry.ColorPicker
         var permanentColour: Int = 0xFFFFFF

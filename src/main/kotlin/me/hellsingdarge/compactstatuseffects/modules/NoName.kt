@@ -12,7 +12,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
     override val config = modConfig.noName
     override val xOffset = 32 + config.margin
     override val xIncrement = 32
-    override val yIncrement = 41
+    override val yIncrement = if (!config.squash) 41 else 41 - 7
     override val maxNum = config.effectsPerColumn
 
     override fun drawBackground()

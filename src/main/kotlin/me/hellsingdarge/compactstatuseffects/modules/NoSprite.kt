@@ -12,8 +12,8 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
     override val config = modConfig.noSprite
     override val xOffset = 99 + config.margin
     override val xIncrement = 99
-    override val yIncrement = 31
-    override val maxNum = config.effectsPerColumn
+    override val yIncrement = if (!config.squash) 31 else 31 - 7
+    override val maxNum = if (!config.squash) config.effectsPerColumn else config.effectsPerColumn + 1
 
     override fun drawBackground()
     {

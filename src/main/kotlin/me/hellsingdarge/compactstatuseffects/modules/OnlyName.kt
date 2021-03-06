@@ -11,8 +11,8 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
     override val config = modConfig.onlyName
     override val xOffset = 99 + config.margin
     override val xIncrement = 99
-    override val yIncrement = 19
-    override val maxNum = config.effectsPerColumn
+    override val yIncrement = if (!config.squash) 19 else 19 - 5
+    override val maxNum = if (!config.squash) config.effectsPerColumn else config.effectsPerColumn + 3
 
     override fun drawBackground()
     {

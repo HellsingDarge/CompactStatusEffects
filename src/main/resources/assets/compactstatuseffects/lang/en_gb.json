@@ -7,6 +7,7 @@
   
   "text.autoconfig.compactstatuseffects.option.noName.uiOffset": "UI offset with active effects",
   "text.autoconfig.compactstatuseffects.option.noName.margin": "Distance between status effects and GUI",
+  "text.autoconfig.compactstatuseffects.option.noName.squash": "Squash effects together",
   
   "text.autoconfig.compactstatuseffects.option.noName.showLevel": "Show effect's level",
   "text.autoconfig.compactstatuseffects.option.noName.levelInArabic": "Show level as arabic number",
@@ -18,6 +19,7 @@
   
   "text.autoconfig.compactstatuseffects.option.onlyName.uiOffset": "UI offset with active effects",
   "text.autoconfig.compactstatuseffects.option.onlyName.margin": "Distance between status effects and GUI",
+  "text.autoconfig.compactstatuseffects.option.onlyName.squash": "Squash effects together",
   
   "text.autoconfig.compactstatuseffects.option.onlyName.effectsPerColumn": "Maximum number of effects in 1 column",
   "text.autoconfig.compactstatuseffects.option.onlyName.effectsPerColumn.@Tooltip": "Controls how many effects are displayed before a new column is used",
@@ -39,6 +41,7 @@
   
   "text.autoconfig.compactstatuseffects.option.noSprite.uiOffset": "UI offset with active effects",
   "text.autoconfig.compactstatuseffects.option.noSprite.margin": "Distance between status effects and GUI",
+  "text.autoconfig.compactstatuseffects.option.noSprite.squash": "Squash effects together",
   
   "text.autoconfig.compactstatuseffects.option.noSprite.effectsPerColumn": "Maximum number of effects in 1 column",
   "text.autoconfig.compactstatuseffects.option.noSprite.effectsPerColumn.@Tooltip": "Controls how many effects are displayed before a new column is used"
