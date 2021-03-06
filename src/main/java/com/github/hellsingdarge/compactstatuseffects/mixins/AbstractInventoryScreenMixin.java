@@ -2,6 +2,9 @@ package com.github.hellsingdarge.compactstatuseffects.mixins;
 
 
 import com.github.hellsingdarge.compactstatuseffects.CustomEffectsDisplay;
+import com.github.hellsingdarge.compactstatuseffects.config.ModConfig;
+import me.shedaniel.autoconfig.AutoConfig;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -29,6 +32,24 @@ public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> exte
     {
         CustomEffectsDisplay customEffectsDisplay = new CustomEffectsDisplay(matrixStack, x, y, effects);
         customEffectsDisplay.draw();
+    }
+
+    @Redirect(method = "applyStatusEffectOffset", at = @At(value = "FIELD", target = "Lnet/minecraft/client/gui/screen/ingame/AbstractInventoryScreen;x:I", opcode = Opcodes.PUTFIELD, ordinal = 1))
+    void redirectOffset(AbstractInventoryScreen abstractInventoryScreen, int value)
+    {
+        ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+        switch (config.getModule())
+        {
+            case NO_NAME:
+                this.x = (this.width - this.backgroundWidth) / 2 + config.getNoName().getUiOffset() * 20;
+                break;
+            case NO_SPRITE:
+                this.x = (this.width - this.backgroundWidth) / 2 + config.getNoSprite().getUiOffset() * 20;
+                break;
+            case ONLY_NAME:
+                this.x = (this.width - this.backgroundWidth) / 2 + config.getOnlyName().getUiOffset() * 20;
+                break;
+        }
     }
 
     @Inject(method = "drawStatusEffectSprites", at = @At("HEAD"), cancellable = true)
