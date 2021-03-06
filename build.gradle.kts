@@ -32,7 +32,7 @@ dependencies {
     val loaderVersion: String by project
     val fabricKotlinVersion: String by project
     val clothVersion: String by project
-    val modmenuVersion: String by project
+    val modMenuVersion: String by project
 
     minecraft("com.mojang:minecraft:$minecraftVersion")
     mappings("net.fabricmc:yarn:$yarnMappings:v2")
@@ -44,7 +44,7 @@ dependencies {
     }
 
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
-    modImplementation("com.terraformersmc:modmenu:$modmenuVersion")
+    modImplementation("com.terraformersmc:modmenu:$modMenuVersion")
     modApi("me.shedaniel.cloth:cloth-config-fabric:$clothVersion") {
         exclude(module = "net.fabricmc.fabric-api")
     }
