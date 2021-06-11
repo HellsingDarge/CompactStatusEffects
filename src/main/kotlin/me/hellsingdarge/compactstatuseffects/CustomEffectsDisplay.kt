@@ -10,10 +10,10 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
 class CustomEffectsDisplay(
-        private val matrixStack: MatrixStack,
-        private val x: Int,
-        private val y: Int,
-        private val statusEffects: Iterable<StatusEffectInstance>
+    private val matrixStack: MatrixStack,
+    private val x: Int,
+    private val y: Int,
+    private val statusEffects: Iterable<StatusEffectInstance>
 )
 {
     fun draw()

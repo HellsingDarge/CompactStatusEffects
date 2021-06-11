@@ -1,5 +1,6 @@
 package me.hellsingdarge.compactstatuseffects.modules
 
+import net.minecraft.client.MinecraftClient
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.render.Tessellator
 import net.minecraft.client.render.VertexConsumerProvider
@@ -14,17 +15,17 @@ object Util
     {
         val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
         textRenderer.draw(
-                text,
-                xPivot,
-                yPivot,
-                colour,
-                withShadow,
-                matrixStack.peek().model,
-                vertexConsumer,
-                false,
-                0xF7F7F7,
-                0xF000F0,
-                textRenderer.isRightToLeft
+            text,
+            xPivot,
+            yPivot,
+            colour,
+            withShadow,
+            matrixStack.peek().model,
+            vertexConsumer,
+            false,
+            0xF7F7F7,
+            0xF000F0,
+            textRenderer.isRightToLeft
         )
         vertexConsumer.draw()
     }
@@ -34,17 +35,17 @@ object Util
         val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
         val xPos = xPivot - textRenderer.getWidth(text) / 2
         textRenderer.draw(
-                text,
-                xPos,
-                yPivot,
-                colour,
-                withShadow,
-                matrixStack.peek().model,
-                vertexConsumer,
-                false,
-                0,
-                0xF000F0,
-                textRenderer.isRightToLeft
+            text,
+            xPos,
+            yPivot,
+            colour,
+            withShadow,
+            matrixStack.peek().model,
+            vertexConsumer,
+            false,
+            0,
+            0xF000F0,
+            textRenderer.isRightToLeft
         )
         vertexConsumer.draw()
     }
@@ -54,17 +55,17 @@ object Util
         val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
         val xPos = xPivot - textRenderer.getWidth(text)
         textRenderer.draw(
-                text,
-                xPos,
-                yPivot,
-                colour,
-                withShadow,
-                matrixStack.peek().model,
-                vertexConsumer,
-                false,
-                0,
-                0xF000F0,
-                textRenderer.isRightToLeft
+            text,
+            xPos,
+            yPivot,
+            colour,
+            withShadow,
+            matrixStack.peek().model,
+            vertexConsumer,
+            false,
+            0,
+            0xF000F0,
+            textRenderer.isRightToLeft
         )
         vertexConsumer.draw()
     }

@@ -12,15 +12,17 @@ import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.util.Identifier
 
 abstract class DrawModule(
-        protected val matrixStack: MatrixStack,
-        protected val x: Int,
-        protected val y: Int,
-        protected val effects: Iterable<StatusEffectInstance>
+    protected val matrixStack: MatrixStack,
+    protected val x: Int,
+    protected val y: Int,
+    protected val effects: Iterable<StatusEffectInstance>
 ): DrawableHelper()
 {
+    protected abstract val width: Int
+    protected abstract val height: Int
     protected abstract val config: IConfigCommon
     protected abstract val xOffset: Int
-    protected abstract val xIncrement: Int
+    protected abstract val xDecrement: Int
     protected abstract val yIncrement: Int
     protected abstract val maxNum: Int
 

@@ -6,12 +6,16 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
 class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
-        DrawModule(matrixStack, x, y, effects)
+    DrawModule(matrixStack, x, y, effects)
 {
+    override val width: Int
+        get() = 100
+    override val height: Int
+        get() = 19
     override val config = modConfig.onlyName
-    override val xOffset = 99 + config.margin
-    override val xIncrement = 99
-    override val yIncrement = if (!config.squash) 19 else 19 - 5
+    override val xOffset = width + config.margin - 1
+    override val xDecrement = width - 1
+    override val yIncrement = if (!config.squash) height else height - 5
     override val maxNum = if (!config.squash) config.effectsPerColumn else config.effectsPerColumn + 3
 
     override fun drawBackground()
@@ -22,9 +26,9 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
 
         repeat(effects.count()) { index ->
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, i - xOffset, j, 0, 41, 100, 19)
+            drawTexture(matrixStack, i - xOffset, j, 0, 41, width, height)
 
-            i = x - ((index + 1) / maxNum) * xIncrement
+            i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement
             if ((index + 1) % maxNum == 0) j = y
         }
@@ -65,7 +69,7 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
 
             Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 6f, colour, true)
 
-            i = x - ((index + 1) / maxNum) * xIncrement
+            i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement
             if ((index + 1) % maxNum == 0) j = y
         }

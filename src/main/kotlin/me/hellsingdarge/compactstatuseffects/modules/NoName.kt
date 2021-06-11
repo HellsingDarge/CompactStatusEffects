@@ -9,10 +9,14 @@ import net.minecraft.entity.effect.StatusEffectUtil
 class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, x, y, effects)
 {
+    override val width: Int
+        get() = 33
+    override val height: Int
+        get() = 41
     override val config = modConfig.noName
-    override val xOffset = 32 + config.margin
-    override val xIncrement = 32
-    override val yIncrement = if (!config.squash) 41 else 41 - 7
+    override val xOffset = width + config.margin - 1
+    override val xDecrement = width - 1
+    override val yIncrement = if (!config.squash) height else height - 7
     override val maxNum = config.effectsPerColumn
 
     override fun drawBackground()
@@ -23,9 +27,9 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
 
         repeat(effects.count()) { index ->
             RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, i - xOffset, j, 0, 0, 33, 41)
+            drawTexture(matrixStack, i - xOffset, j, 0, 0, width, height)
 
-            i = x - ((index + 1) / maxNum) * xIncrement
+            i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement
             if ((index + 1) % maxNum == 0) j = y
         }
@@ -42,7 +46,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
             textureManager.bindTexture(sprite.atlas.id)
             drawSprite(matrixStack, j + 8 - xOffset, i + 7, zOffset, 18, 18, sprite)
 
-            j = x - ((index + 1) / maxNum) * xIncrement
+            j = x - ((index + 1) / maxNum) * xDecrement
             i += yIncrement
             if ((index + 1) % maxNum == 0) i = y
         }
@@ -79,7 +83,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
                 Util.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 18f, withShadow = true)
             }
 
-            i = x - ((index + 1) / maxNum) * xIncrement
+            i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement
             if ((index + 1) % maxNum == 0) j = y
         }
