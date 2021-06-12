@@ -37,18 +37,18 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
 
     override fun drawSprite()
     {
-        var i = y
-        var j = x
+        var i = x
+        var j = y
 
         effects.forEachIndexed { index, instance ->
             val effect = instance.effectType
             val sprite = spriteManager.getSprite(effect)
             textureManager.bindTexture(sprite.atlas.id)
-            drawSprite(matrixStack, j + 8 - xOffset, i + 7, zOffset, 18, 18, sprite)
+            drawSprite(matrixStack, i + 8 - xOffset, j + 7, zOffset, 18, 18, sprite)
 
-            j = x - ((index + 1) / maxNum) * xDecrement
-            i += yIncrement
-            if ((index + 1) % maxNum == 0) i = y
+            i = x - ((index + 1) / maxNum) * xDecrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = y
         }
     }
 

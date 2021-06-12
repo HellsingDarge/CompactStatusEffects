@@ -45,6 +45,6 @@ abstract class DrawModule(
 
     companion object
     {
-        lateinit var mc: MinecraftClient
+        val mc: MinecraftClient = MinecraftClient.getInstance()
     }
 }

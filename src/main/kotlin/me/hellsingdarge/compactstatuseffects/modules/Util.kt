@@ -8,7 +8,7 @@ import net.minecraft.client.util.math.MatrixStack
 
 object Util
 {
-    lateinit var textRenderer: TextRenderer
+    private val textRenderer: TextRenderer by lazy { MinecraftClient.getInstance().textRenderer }
 
     // same as TextRenderer.draw, but here for completeness
     fun drawLeftAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false)

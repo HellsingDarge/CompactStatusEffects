@@ -27,7 +27,6 @@ repositories {
 
 dependencies {
     val minecraftVersion: String by project
-    val fabricVersion: String by project
     val yarnMappings: String by project
     val loaderVersion: String by project
     val fabricKotlinVersion: String by project
@@ -38,10 +37,6 @@ dependencies {
     mappings("net.fabricmc:yarn:$yarnMappings:v2")
 
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
-
-    setOf("fabric-lifecycle-events-v1").forEach {
-        modImplementation(fabricApi.module(it, fabricVersion))
-    }
 
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
     modImplementation("com.terraformersmc:modmenu:$modMenuVersion")
