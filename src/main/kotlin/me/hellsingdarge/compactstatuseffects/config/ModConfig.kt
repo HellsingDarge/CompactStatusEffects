@@ -1,14 +1,22 @@
 package me.hellsingdarge.compactstatuseffects.config
 
+import com.terraformersmc.modmenu.api.ConfigScreenFactory
+import com.terraformersmc.modmenu.api.ModMenuApi
+import me.shedaniel.autoconfig.AutoConfig
 import me.shedaniel.autoconfig.ConfigData
 import me.shedaniel.autoconfig.annotation.Config
 import me.shedaniel.autoconfig.annotation.ConfigEntry
 
 @Config(name = "compactstatuseffects")
-class ModConfig: ConfigData
+class ModConfig: ConfigData, ModMenuApi
 {
+    override fun getModConfigScreenFactory(): ConfigScreenFactory<*>
+    {
+        return ConfigScreenFactory { parent -> AutoConfig.getConfigScreen(this::class.java, parent).get() }
+    }
+
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
-    var module: Module = Module.NO_NAME
+    val module: Module = Module.NO_NAME
 
     @ConfigEntry.Gui.CollapsibleObject
     val noName = NoNameConfig()
@@ -29,67 +37,67 @@ class ModConfig: ConfigData
     class NoSpriteConfig: ConfigData, IConfigCommon
     {
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
-        override var uiOffset: Int = 0
+        override val uiOffset: Int = 0
 
         @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
-        override var margin: Int = 10
+        override val margin: Int = 10
 
-        override var squash: Boolean = false
+        override val squash: Boolean = false
 
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        override var effectsPerColumn: Int = 5
+        override val effectsPerColumn: Int = 5
     }
 
     class NoNameConfig: ConfigData, IConfigCommon
     {
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
-        override var uiOffset: Int = 0
+        override val uiOffset: Int = 0
 
         @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
-        override var margin: Int = 10
+        override val margin: Int = 10
 
-        override var squash: Boolean = false
+        override val squash: Boolean = false
 
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        override var effectsPerColumn: Int = 4
+        override val effectsPerColumn: Int = 4
 
-        var showLevel: Boolean = true
-        var levelInArabic: Boolean = false
+        val showLevel: Boolean = true
+        val levelInArabic: Boolean = false
     }
 
     class OnlyNameConfig: ConfigData, IConfigCommon
     {
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
-        override var uiOffset: Int = 0
+        override val uiOffset: Int = 0
 
         @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
-        override var margin: Int = 10
+        override val margin: Int = 10
 
         @ConfigEntry.BoundedDiscrete(min = 1, max = 15)
-        override var effectsPerColumn: Int = 8
+        override val effectsPerColumn: Int = 8
 
-        override var squash: Boolean = false
-
-        @ConfigEntry.ColorPicker
-        var permanentColour: Int = 0xFFFFFF
+        override val squash: Boolean = false
 
         @ConfigEntry.ColorPicker
-        var wontExpireSoonColour: Int = 0x00B009
+        val permanentColour: Int = 0xFFFFFF
 
         @ConfigEntry.ColorPicker
-        var soonToExpireColour: Int = 0xD4CD00
+        val wontExpireSoonColour: Int = 0x00B009
 
         @ConfigEntry.ColorPicker
-        var expiringColour: Int = 0xD40000
+        val soonToExpireColour: Int = 0xD4CD00
+
+        @ConfigEntry.ColorPicker
+        val expiringColour: Int = 0xD40000
 
         @ConfigEntry.Gui.Tooltip(count = 2)
         @ConfigEntry.BoundedDiscrete(min = 0, max = 5 * 60)
-        var expiringBound: Int = 20
+        val expiringBound: Int = 20
 
         @ConfigEntry.Gui.Tooltip(count = 2)
         @ConfigEntry.BoundedDiscrete(min = 0, max = 10 * 60)
-        var soonToExpireBound: Int = 60
+        val soonToExpireBound: Int = 60
     }
 }

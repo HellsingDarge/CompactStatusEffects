@@ -2,8 +2,8 @@ package me.hellsingdarge.compactstatuseffects.config
 
 interface IConfigCommon
 {
-    var uiOffset: Int
-    var margin: Int
-    var effectsPerColumn: Int
-    var squash: Boolean
+    val uiOffset: Int
+    val margin: Int
+    val effectsPerColumn: Int
+    val squash: Boolean
 }
