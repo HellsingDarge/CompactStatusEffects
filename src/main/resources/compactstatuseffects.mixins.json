@@ -4,7 +4,8 @@
   "package": "me.hellsingdarge.compactstatuseffects.mixins",
   "compatibilityLevel": "JAVA_8",
   "client": [
-    "AbstractInventoryScreenMixin"
+    "AbstractInventoryScreenMixin",
+    "InGameHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1

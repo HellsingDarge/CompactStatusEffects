@@ -5,6 +5,7 @@ import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.render.Tessellator
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.util.math.MatrixStack
+import org.lwjgl.opengl.GL11
 
 object Util
 {
@@ -50,14 +51,17 @@ object Util
         vertexConsumer.draw()
     }
 
-    fun drawRightAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false)
+    fun drawRightAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
         val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
         val xPos = xPivot - textRenderer.getWidth(text)
+        val fontScale = fontSize / textRenderer.fontHeight.toFloat()
+        GL11.glPushMatrix()
+        GL11.glScalef(fontScale, fontScale, fontScale)
         textRenderer.draw(
             text,
-            xPos,
-            yPivot,
+            xPos / fontScale,
+            yPivot / fontScale,
             colour,
             withShadow,
             matrixStack.peek().model,
@@ -68,5 +72,6 @@ object Util
             textRenderer.isRightToLeft
         )
         vertexConsumer.draw()
+        GL11.glPopMatrix()
     }
 }
