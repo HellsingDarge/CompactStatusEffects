@@ -7,6 +7,8 @@ import net.minecraft.entity.effect.StatusEffectUtil
 
 object HudTimer
 {
+    private val mc: MinecraftClient by lazy { MinecraftClient.getInstance() }
+
     @JvmStatic
     fun draw(matrices: MatrixStack, effects: Collection<StatusEffectInstance>)
     {
@@ -16,24 +18,23 @@ object HudTimer
         effects.forEach { inst ->
             if (inst.shouldShowIcon())
             {
-                val fontSize = 9
-                var k = MinecraftClient.getInstance().window.scaledWidth + 24
+                val fontSize = 7
+                var k = mc.window.scaledWidth
                 var l = 1 + 16
 
                 if (inst.effectType.isBeneficial)
                 {
-                    ++i
                     k -= 25 * i
+                    i++
                 }
                 else
                 {
-                    ++j
                     k -= 25 * j
                     l += 26
+                    j++
                 }
 
-                Util.drawRightAlign(matrices, StatusEffectUtil.durationToString(inst, 1.0f), k.toFloat(), l.toFloat(), withShadow = true, fontSize = fontSize)
-
+                Util.drawRightAlign(matrices, StatusEffectUtil.durationToString(inst, 1.0f), k - 3f, l.toFloat(), withShadow = true, fontSize = fontSize)
             }
         }
     }

@@ -1,6 +1,7 @@
 package me.hellsingdarge.compactstatuseffects.mixins;
 
 
+import com.google.common.collect.Ordering;
 import me.hellsingdarge.compactstatuseffects.modules.HudTimer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,6 +29,6 @@ public class InGameHudMixin
     )
     private void afterRun(MatrixStack matrices, CallbackInfo ci, Collection<StatusEffectInstance> collection)
     {
-        HudTimer.draw(matrices, collection);
+        HudTimer.draw(matrices, Ordering.natural().reverse().sortedCopy(collection));
     }
 }

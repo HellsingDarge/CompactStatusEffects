@@ -12,55 +12,34 @@ object Util
     private val textRenderer: TextRenderer by lazy { MinecraftClient.getInstance().textRenderer }
 
     // same as TextRenderer.draw, but here for completeness
-    fun drawLeftAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false)
+    fun drawLeftAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
-        val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
-        textRenderer.draw(
-            text,
-            xPivot,
-            yPivot,
-            colour,
-            withShadow,
-            matrixStack.peek().model,
-            vertexConsumer,
-            false,
-            0xF7F7F7,
-            0xF000F0,
-            textRenderer.isRightToLeft
-        )
-        vertexConsumer.draw()
+        draw(matrixStack, text, xPivot, yPivot, colour, withShadow, fontSize)
     }
 
-    fun drawCentreAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false)
+    fun drawCentreAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
-        val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
-        val xPos = xPivot - textRenderer.getWidth(text) / 2
-        textRenderer.draw(
-            text,
-            xPos,
-            yPivot,
-            colour,
-            withShadow,
-            matrixStack.peek().model,
-            vertexConsumer,
-            false,
-            0,
-            0xF000F0,
-            textRenderer.isRightToLeft
-        )
-        vertexConsumer.draw()
+        val xPos = xPivot - textRenderer.getWidth(text) / 2 * fontSize / textRenderer.fontHeight
+        draw(matrixStack, text, xPos, yPivot, colour, withShadow, fontSize)
     }
 
     fun drawRightAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
-        val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
-        val xPos = xPivot - textRenderer.getWidth(text)
+        val xPos = xPivot - textRenderer.getWidth(text) * fontSize / textRenderer.fontHeight
+        draw(matrixStack, text, xPos, yPivot, colour, withShadow, fontSize)
+    }
+
+    private fun draw(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
+    {
         val fontScale = fontSize / textRenderer.fontHeight.toFloat()
         GL11.glPushMatrix()
         GL11.glScalef(fontScale, fontScale, fontScale)
+
+        val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
+
         textRenderer.draw(
             text,
-            xPos / fontScale,
+            xPivot / fontScale,
             yPivot / fontScale,
             colour,
             withShadow,
@@ -68,7 +47,7 @@ object Util
             vertexConsumer,
             false,
             0,
-            0xF000F0,
+            0xF00F0,
             textRenderer.isRightToLeft
         )
         vertexConsumer.draw()
