@@ -58,11 +58,10 @@ object Util
         {
             val size = 1
             val length = 5
-            // it's fecking ARGB instead of RGBA
             val debugColour = (0.6f * 255).toInt().shl(24) + colour
-            // horizontal
+            // Horizontal
             DrawableHelper.fill(matrixStack, (x - length).toInt(), (y - size).toInt(), (x + length).toInt(), (y + size).toInt(), debugColour)
-            // vertical
+            // Vertical
             DrawableHelper.fill(matrixStack, (x - size).toInt(), (y - length).toInt(), (x + size).toInt(), (y + length).toInt(), debugColour)
         }
     }
