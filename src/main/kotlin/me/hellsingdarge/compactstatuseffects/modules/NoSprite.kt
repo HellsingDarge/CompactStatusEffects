@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.effect.StatusEffectUtil
 
 class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
     DrawModule(matrixStack, x, y, effects)
@@ -49,16 +48,7 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
             }
 
             Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 15f, 0xFFFFFF, true)
-            val duration = StatusEffectUtil.durationToString(instance, 1.0f)
-
-            if (instance.isPermanent)
-            {
-                Util.drawLeftAlign(matrixStack, "∞", i + 5f - xOffset, j + 25f, 0x7F7F7F, true)
-            }
-            else
-            {
-                Util.drawLeftAlign(matrixStack, duration, i + 5f - xOffset, j + 25f, 0x7F7F7F, true)
-            }
+            Util.drawLeftAlign(matrixStack, Util.effectDurationToStr(instance), i + 5f - xOffset, j + 25f, 0x7F7F7F, true)
 
             i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement

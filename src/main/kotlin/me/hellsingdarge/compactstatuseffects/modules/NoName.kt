@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem
 import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.effect.StatusEffectUtil
 
 class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
         DrawModule(matrixStack, x, y, effects)
@@ -58,16 +57,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
         var j = y
 
         effects.forEachIndexed { index, instance ->
-            val duration = StatusEffectUtil.durationToString(instance, 1.0f)
-
-            if (instance.isPermanent)
-            {
-                Util.drawCentreAlign(matrixStack, "∞", i + 17f - xOffset, j + 36f, 0x7F7F7F)
-            }
-            else
-            {
-                Util.drawCentreAlign(matrixStack, duration, i + 17f - xOffset, j + 36f, 0x7F7F7F, true)
-            }
+            Util.drawCentreAlign(matrixStack, Util.effectDurationToStr(instance), i + 17f - xOffset, j + 36f, 0x7F7F7F, true)
 
             if (config.showLevel && instance.amplifier in 1..9)
             {

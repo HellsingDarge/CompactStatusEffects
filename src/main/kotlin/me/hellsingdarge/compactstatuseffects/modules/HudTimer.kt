@@ -3,7 +3,6 @@ package me.hellsingdarge.compactstatuseffects.modules
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.entity.effect.StatusEffectUtil
 
 object HudTimer
 {
@@ -34,7 +33,7 @@ object HudTimer
                     j++
                 }
 
-                Util.drawRightAlign(matrices, StatusEffectUtil.durationToString(inst, 1.0f), k - 3.25f, l - 0.25f, withShadow = true, fontSize = fontSize)
+                Util.drawRightAlign(matrices, Util.effectDurationToStr(inst), k - 3.25f, l - 0.25f, withShadow = true, fontSize = fontSize, colour = 0xD3D3D3)
             }
         }
     }
