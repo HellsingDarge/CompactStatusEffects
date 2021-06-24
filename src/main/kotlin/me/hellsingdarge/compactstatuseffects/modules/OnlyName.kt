@@ -67,7 +67,7 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
                 effectName = effectName + ' ' + I18n.translate("enchantment.level.${instance.amplifier + 1}", *arrayOfNulls(0))
             }
 
-            Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 6f, colour, true)
+            Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 15f, colour, true)
 
             i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement

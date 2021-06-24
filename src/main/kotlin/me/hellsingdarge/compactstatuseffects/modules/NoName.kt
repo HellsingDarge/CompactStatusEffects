@@ -62,11 +62,11 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
 
             if (instance.isPermanent)
             {
-                Util.drawCentreAlign(matrixStack, "∞", i + 17f - xOffset, j + 27f, 0x7F7F7F)
+                Util.drawCentreAlign(matrixStack, "∞", i + 17f - xOffset, j + 36f, 0x7F7F7F)
             }
             else
             {
-                Util.drawCentreAlign(matrixStack, duration, i + 17f - xOffset, j + 27f, 0x7F7F7F, true)
+                Util.drawCentreAlign(matrixStack, duration, i + 17f - xOffset, j + 36f, 0x7F7F7F, true)
             }
 
             if (config.showLevel && instance.amplifier in 1..9)
@@ -80,7 +80,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
                     I18n.translate("enchantment.level." + (instance.amplifier + 1))
                 }
 
-                Util.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 18f, withShadow = true)
+                Util.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 27f, withShadow = true)
             }
 
             i = x - ((index + 1) / maxNum) * xDecrement

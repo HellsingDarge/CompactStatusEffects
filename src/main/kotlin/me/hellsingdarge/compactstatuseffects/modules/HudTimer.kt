@@ -18,9 +18,9 @@ object HudTimer
         effects.forEach { inst ->
             if (inst.shouldShowIcon())
             {
-                val fontSize = 3
+                val fontSize = 6
                 var k = mc.window.scaledWidth
-                var l = 1 + 16
+                var l = 24
 
                 if (inst.effectType.isBeneficial)
                 {
@@ -34,7 +34,7 @@ object HudTimer
                     j++
                 }
 
-                Util.drawRightAlign(matrices, StatusEffectUtil.durationToString(inst, 1.0f), k - 3f, l.toFloat(), withShadow = true, fontSize = fontSize)
+                Util.drawRightAlign(matrices, StatusEffectUtil.durationToString(inst, 1.0f), k - 3.25f, l - 0.25f, withShadow = true, fontSize = fontSize)
             }
         }
     }

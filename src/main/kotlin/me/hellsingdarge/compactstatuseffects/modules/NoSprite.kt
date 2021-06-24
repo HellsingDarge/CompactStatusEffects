@@ -48,16 +48,16 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
                 effectName = effectName + ' ' + I18n.translate("enchantment.level." + (instance.amplifier + 1), *arrayOfNulls(0))
             }
 
-            Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 6f, 0xFFFFFF, true)
+            Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 15f, 0xFFFFFF, true)
             val duration = StatusEffectUtil.durationToString(instance, 1.0f)
 
             if (instance.isPermanent)
             {
-                Util.drawLeftAlign(matrixStack, "∞", i + 5f - xOffset, j + 16f, 0x7F7F7F, true)
+                Util.drawLeftAlign(matrixStack, "∞", i + 5f - xOffset, j + 25f, 0x7F7F7F, true)
             }
             else
             {
-                Util.drawLeftAlign(matrixStack, duration, i + 5f - xOffset, j + 16f, 0x7F7F7F, true)
+                Util.drawLeftAlign(matrixStack, duration, i + 5f - xOffset, j + 25f, 0x7F7F7F, true)
             }
 
             i = x - ((index + 1) / maxNum) * xDecrement

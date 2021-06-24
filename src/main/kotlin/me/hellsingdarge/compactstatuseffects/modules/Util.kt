@@ -17,7 +17,7 @@ object Util
     {
         drawAnchor(matrixStack, xPivot, yPivot, 0xFF0000)
 
-        draw(matrixStack, text, xPivot, yPivot, colour, withShadow, fontSize)
+        draw(matrixStack, text, xPivot, yPivot - fontSize, colour, withShadow, fontSize)
     }
 
     fun drawCentreAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
@@ -25,7 +25,7 @@ object Util
         drawAnchor(matrixStack, xPivot, yPivot, 0x00FF00)
 
         val xPos = xPivot - textRenderer.getWidth(text) / 2 * fontSize / textRenderer.fontHeight
-        draw(matrixStack, text, xPos, yPivot, colour, withShadow, fontSize)
+        draw(matrixStack, text, xPos, yPivot - fontSize, colour, withShadow, fontSize)
     }
 
     fun drawRightAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
@@ -33,12 +33,12 @@ object Util
         drawAnchor(matrixStack, xPivot, yPivot, 0x0000FF)
 
         val xPos = xPivot - textRenderer.getWidth(text) * fontSize / textRenderer.fontHeight
-        draw(matrixStack, text, xPos, yPivot, colour, withShadow, fontSize)
+        draw(matrixStack, text, xPos, yPivot - fontSize, colour, withShadow, fontSize)
     }
 
     private fun drawAnchor(matrixStack: MatrixStack, x: Float, y: Float, colour: Int)
     {
-        if (true)
+        if (false)
         {
             val size = 1
             val length = 5
