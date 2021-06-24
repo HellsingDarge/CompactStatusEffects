@@ -18,7 +18,7 @@ object HudTimer
         effects.forEach { inst ->
             if (inst.shouldShowIcon())
             {
-                val fontSize = 7
+                val fontSize = 3
                 var k = mc.window.scaledWidth
                 var l = 1 + 16
 

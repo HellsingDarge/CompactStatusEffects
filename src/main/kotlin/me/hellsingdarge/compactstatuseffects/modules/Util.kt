@@ -2,6 +2,7 @@ package me.hellsingdarge.compactstatuseffects.modules
 
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.font.TextRenderer
+import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.render.Tessellator
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.util.math.MatrixStack
@@ -14,23 +15,46 @@ object Util
     // same as TextRenderer.draw, but here for completeness
     fun drawLeftAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
+        drawAnchor(matrixStack, xPivot, yPivot, 0xFF0000)
+
         draw(matrixStack, text, xPivot, yPivot, colour, withShadow, fontSize)
     }
 
     fun drawCentreAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
+        drawAnchor(matrixStack, xPivot, yPivot, 0x00FF00)
+
         val xPos = xPivot - textRenderer.getWidth(text) / 2 * fontSize / textRenderer.fontHeight
         draw(matrixStack, text, xPos, yPivot, colour, withShadow, fontSize)
     }
 
     fun drawRightAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
+        drawAnchor(matrixStack, xPivot, yPivot, 0x0000FF)
+
         val xPos = xPivot - textRenderer.getWidth(text) * fontSize / textRenderer.fontHeight
         draw(matrixStack, text, xPos, yPivot, colour, withShadow, fontSize)
     }
 
+    private fun drawAnchor(matrixStack: MatrixStack, x: Float, y: Float, colour: Int)
+    {
+        if (true)
+        {
+            val size = 1
+            val length = 5
+            // it's fecking ARGB instead of RGBA
+            val debugColour = (0.6f * 255).toInt().shl(24) + colour
+            // horizontal
+            DrawableHelper.fill(matrixStack, (x - length).toInt(), (y - size).toInt(), (x + length).toInt(), (y + size).toInt(), debugColour)
+            // vertical
+            DrawableHelper.fill(matrixStack, (x - size).toInt(), (y - length).toInt(), (x + size).toInt(), (y + length).toInt(), debugColour)
+        }
+    }
+
     private fun draw(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
+        drawAnchor(matrixStack, xPivot, yPivot, 0xFFFFFF)
+
         val fontScale = fontSize / textRenderer.fontHeight.toFloat()
         GL11.glPushMatrix()
         GL11.glScalef(fontScale, fontScale, fontScale)
