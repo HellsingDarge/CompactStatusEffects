@@ -1,5 +1,7 @@
 package me.hellsingdarge.compactstatuseffects.modules
 
+import me.hellsingdarge.compactstatuseffects.TextRendererHelper
+import me.hellsingdarge.compactstatuseffects.Utils
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
@@ -35,21 +37,23 @@ object HudTimer
                     j++
                 }
 
-                val colour = if (inst.duration <= 200)
-                {
-                    val m = 10 - inst.duration / 20
-                    val f = MathHelper.clamp(inst.duration.toFloat() / 10.0f / 5.0f * 0.5f, 0.0f, 0.5f) +
-                            MathHelper.cos(inst.duration.toFloat() * 3.1415927f / 5.0f) *
-                            MathHelper.clamp(m.toFloat() / 10.0f * 0.25f, 0.0f, 0.25f)
-                    // Must be 4, otherwise TextRenderer.tweakTransparency will convert it to full brightness
-                    max((f * 255).toInt(), 4).shl(24) + 0xD3D3D3
-                }
-                else
-                {
-                    0xAAD3D3D3.toInt()
+                val colour = 0xD3D3D3.let { base ->
+                    if (inst.duration <= 200)
+                    {
+                        val m = 10 - inst.duration / 20
+                        val f = MathHelper.clamp(inst.duration.toFloat() / 10.0f / 5.0f * 0.5f, 0.0f, 0.5f) +
+                                MathHelper.cos(inst.duration.toFloat() * 3.1415927f / 5.0f) *
+                                MathHelper.clamp(m.toFloat() / 10.0f * 0.25f, 0.0f, 0.25f)
+                        // Must be 4, otherwise TextRenderer.tweakTransparency will convert it to full brightness
+                        max((f * 255).toInt(), 4).shl(24) + base
+                    }
+                    else
+                    {
+                        0xFF.shl(24) + base
+                    }
                 }
 
-                Util.drawRightAlign(matrices, Util.effectDurationToStr(inst), k - 3.25f, l - 0.25f, withShadow = true, fontSize = fontSize, colour = colour)
+                TextRendererHelper.drawRightAlign(matrices, Utils.effectDurationToStr(inst), k - 3.25f, l - 0.25f, colour = colour, withShadow = true, fontSize = fontSize)
             }
         }
     }
