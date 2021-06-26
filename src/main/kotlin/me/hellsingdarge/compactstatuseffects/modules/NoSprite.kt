@@ -1,6 +1,8 @@
 package me.hellsingdarge.compactstatuseffects.modules
 
 import com.mojang.blaze3d.systems.RenderSystem
+import me.hellsingdarge.compactstatuseffects.TextRendererHelper
+import me.hellsingdarge.compactstatuseffects.Utils
 import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
@@ -47,8 +49,8 @@ class NoSprite(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
                 effectName = effectName + ' ' + I18n.translate("enchantment.level." + (instance.amplifier + 1), *arrayOfNulls(0))
             }
 
-            Util.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 15f, 0xFFFFFF, true)
-            Util.drawLeftAlign(matrixStack, Util.effectDurationToStr(instance), i + 5f - xOffset, j + 25f, 0x7F7F7F, true)
+            TextRendererHelper.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 15f, 0xFFFFFF, true)
+            TextRendererHelper.drawLeftAlign(matrixStack, Utils.effectDurationToStr(instance), i + 5f - xOffset, j + 25f, 0x7F7F7F, true)
 
             i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement

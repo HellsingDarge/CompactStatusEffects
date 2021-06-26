@@ -1,6 +1,8 @@
 package me.hellsingdarge.compactstatuseffects.modules
 
 import com.mojang.blaze3d.systems.RenderSystem
+import me.hellsingdarge.compactstatuseffects.TextRendererHelper
+import me.hellsingdarge.compactstatuseffects.Utils
 import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
@@ -57,7 +59,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
         var j = y
 
         effects.forEachIndexed { index, instance ->
-            Util.drawCentreAlign(matrixStack, Util.effectDurationToStr(instance), i + 17f - xOffset, j + 36f, 0x7F7F7F, true)
+            TextRendererHelper.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), i + 17f - xOffset, j + 36f, 0x7F7F7F, true)
 
             if (config.showLevel && instance.amplifier in 1..9)
             {
@@ -70,7 +72,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
                     I18n.translate("enchantment.level." + (instance.amplifier + 1))
                 }
 
-                Util.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 27f, withShadow = true)
+                TextRendererHelper.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 27f, withShadow = true)
             }
 
             i = x - ((index + 1) / maxNum) * xDecrement
