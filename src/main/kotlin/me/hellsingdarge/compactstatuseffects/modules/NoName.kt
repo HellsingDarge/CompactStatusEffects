@@ -77,12 +77,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
 
             onHover(i, j)
             { mouseX, mouseY ->
-                var effectName = I18n.translate(instance.effectType.translationKey, *arrayOfNulls(0))
-
-                if (instance.amplifier in 1..9)
-                {
-                    effectName += ' ' + I18n.translate("enchantment.level." + (instance.amplifier + 1), *arrayOfNulls(0))
-                }
+                val effectName = instance.getName()
 
                 TextRendererHelper.drawLeftAlign(matrixStack, effectName, mouseX.toFloat(), mouseY.toFloat(), withShadow = true)
             }

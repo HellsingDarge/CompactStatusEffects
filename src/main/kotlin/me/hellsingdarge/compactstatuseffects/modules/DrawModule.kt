@@ -5,6 +5,7 @@ import me.hellsingdarge.compactstatuseffects.config.ModConfig
 import me.shedaniel.autoconfig.AutoConfig
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawableHelper
+import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.texture.StatusEffectSpriteManager
 import net.minecraft.client.texture.TextureManager
 import net.minecraft.client.util.math.MatrixStack
@@ -42,6 +43,19 @@ abstract class DrawModule(
     open fun drawDescription()
     {
     }
+
+    protected fun StatusEffectInstance.getName(): String
+    {
+        var effectName = I18n.translate(this.effectType.translationKey, *arrayOfNulls(0))
+
+        if (this.amplifier in 1..9)
+        {
+            effectName += ' ' + I18n.translate("enchantment.level." + (this.amplifier + 1), *arrayOfNulls(0))
+        }
+
+        return effectName
+    }
+
 
     protected inline fun onHover(x: Int, y: Int, block: (mouseX: Int, mouseY: Int) -> Unit)
     {
