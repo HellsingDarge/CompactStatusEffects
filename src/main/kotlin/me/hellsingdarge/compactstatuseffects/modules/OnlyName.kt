@@ -2,7 +2,6 @@ package me.hellsingdarge.compactstatuseffects.modules
 
 import com.mojang.blaze3d.systems.RenderSystem
 import me.hellsingdarge.compactstatuseffects.TextRendererHelper
-import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
@@ -61,12 +60,7 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
                 }
             }
 
-            var effectName = I18n.translate(instance.effectType.translationKey, *arrayOfNulls(0))
-
-            if (instance.amplifier in 1..9)
-            {
-                effectName = effectName + ' ' + I18n.translate("enchantment.level.${instance.amplifier + 1}", *arrayOfNulls(0))
-            }
+            val effectName = instance.getName()
 
             TextRendererHelper.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 15f, colour, true)
 
