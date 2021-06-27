@@ -43,6 +43,17 @@ abstract class DrawModule(
     {
     }
 
+    protected inline fun onHover(x: Int, y: Int, block: (mouseX: Int, mouseY: Int) -> Unit)
+    {
+        val mouseX = (mc.mouse.x * mc.window.scaledWidth / mc.window.width).toInt()
+        val mouseY = (mc.mouse.y * mc.window.scaledHeight / mc.window.height).toInt()
+
+        if (mouseX in (x - xDecrement - config.margin + 1)..(x - config.margin - 1) && mouseY in (y + 1)..(y + yIncrement - 1))
+        {
+            block(mouseX, mouseY)
+        }
+    }
+
     companion object
     {
         val mc: MinecraftClient = MinecraftClient.getInstance()
