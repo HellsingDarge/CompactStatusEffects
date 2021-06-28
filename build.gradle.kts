@@ -11,7 +11,7 @@ java {
 val jarBaseName: String by project
 
 base {
-    archivesBaseName = jarBaseName
+    archivesName.set(jarBaseName)
 }
 
 val mavenGroup: String by project
