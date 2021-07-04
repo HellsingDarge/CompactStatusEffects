@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "compactstatuseffects",
-  "version": "${version}",
+  "version": "${mod_ver}",
   "name": "Compact Status Effects",
   "description": "Reduced space consumption of status effects",
   "authors": [
@@ -39,14 +39,13 @@
   ],
   
   "depends": {
-    "fabric-lifecycle-events-v1": ">=0.16.2",
-    "fabric-language-kotlin": ">=1.4.30",
-    "cloth-config2": ">=4.11.14",
-    "minecraft": ">=1.16.4"
+    "fabric-language-kotlin": ">=${fabric_kotlin_ver}",
+    "cloth-config2": ">=${cloth_ver}",
+    "minecraft": ">=${minecraft_ver}"
   },
   
   "suggests": {
-    "modmenu": ">=1.16.7"
+    "modmenu": ">=${modmenu_ver}"
   },
   
   "conflicts": {
