@@ -45,37 +45,57 @@ dependencies {
     }
 }
 
-tasks.getByName<ProcessResources>("processResources") {
-    filesMatching("fabric.mod.json") {
-        expand(
-            // Must be mutable, otherwise it crashes with "couldn't copy file" due "Unsupported operation"
-            mutableMapOf(
-               "version" to project.version
-            )
-        )
+tasks.named<ProcessResources>("processResources") {
+    copy {
+        val enGB = mainSourceSet.resources.filter { "lang" in it.path }.first { it.name == "en_gb.json" }.toPath()
+        from(enGB)
+        rename {
+            "en_us.json"
+        }
+        into(enGB.parent)
     }
+    dependsOn(fillVersions)
 }
 
-tasks.withType<JavaCompile> {
+tasks.named<JavaCompile>("compileJava") {
+    dependsOn(fillVersions)
     options.encoding = "UTF-8"
-    dependsOn("createUSLang")
 }
 
-tasks.getByName<Jar>("jar") {
+tasks.named<Jar>("jar") {
     from("LICENCE")
+    exclude("_fabric.mod.json")
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+tasks.named<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>("compileKotlin") {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
 }
 
-val sourceSet = the<SourceSetContainer>()
+val mainSourceSet: SourceSet = the<SourceSetContainer>()["main"]
 
-tasks.register("createUSLang") {
-    doFirst {
-        val langFiles = sourceSet["main"].resources.filter { "lang" in it.absolutePath }.files
-        val enGB = langFiles.first { it.name == "en_gb.json" }
-        val enUS = langFiles.firstOrNull { it.name == "en_us.json" } ?: File(enGB.parent, "en_us.json")
-        enGB.copyTo(enUS, true)
+val fillVersions = tasks.register<Copy>("fillVersions") {
+    inputs.file("gradle.properties")
+
+    val template = mainSourceSet.resources.first { it.name == "_fabric.mod.json" }.toPath()
+
+    from(template) {
+        val minecraftVersion: String by project
+        val fabricKotlinVersion: String by project
+        val clothVersion: String by project
+        val modMenuVersion: String by project
+
+        expand(
+            mutableMapOf(
+                "mod_ver" to project.version,
+                "minecraft_ver" to minecraftVersion,
+                "fabric_kotlin_ver" to fabricKotlinVersion,
+                "cloth_ver" to clothVersion,
+                "modmenu_ver" to modMenuVersion
+            )
+        )
     }
+    rename {
+        "fabric.mod.json"
+    }
+    into(template.parent)
 }
