@@ -75,8 +75,7 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
                 TextRendererHelper.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 27f, withShadow = true)
             }
 
-            onHover(i, j)
-            { mouseX, mouseY ->
+            onHover(i, j) { mouseX, mouseY ->
                 val effectName = instance.getName()
 
                 TextRendererHelper.drawLeftAlign(matrixStack, effectName, mouseX.toFloat(), mouseY.toFloat(), withShadow = true)

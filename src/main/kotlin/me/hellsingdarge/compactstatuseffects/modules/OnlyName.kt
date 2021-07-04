@@ -2,6 +2,7 @@ package me.hellsingdarge.compactstatuseffects.modules
 
 import com.mojang.blaze3d.systems.RenderSystem
 import me.hellsingdarge.compactstatuseffects.TextRendererHelper
+import me.hellsingdarge.compactstatuseffects.Utils
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
@@ -63,6 +64,10 @@ class OnlyName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<Statu
             val effectName = instance.getName()
 
             TextRendererHelper.drawLeftAlign(matrixStack, effectName, i + 5f - xOffset, j + 15f, colour, true)
+
+            onHover(i, j) { mouseX, mouseY ->
+                TextRendererHelper.drawLeftAlign(matrixStack, Utils.effectDurationToStr(instance), mouseX.toFloat(), mouseY.toFloat(), withShadow = true)
+            }
 
             i = x - ((index + 1) / maxNum) * xDecrement
             j += yIncrement
