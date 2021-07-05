@@ -11,8 +11,8 @@ import net.minecraft.entity.effect.StatusEffectInstance
 
 class CustomEffectsDisplay(
     private val matrixStack: MatrixStack,
-    private val x: Int,
-    private val y: Int,
+    private val uiX: Int,
+    private val uiY: Int,
     private val statusEffects: Iterable<StatusEffectInstance>
 )
 {
@@ -20,13 +20,11 @@ class CustomEffectsDisplay(
     {
         val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
         {
-            ModConfig.Module.NO_NAME -> NoName(matrixStack, x, y, statusEffects)
-            ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, x, y, statusEffects)
-            ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, x, y, statusEffects)
+            ModConfig.Module.NO_NAME -> NoName(matrixStack, uiX, uiY, statusEffects)
+            ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, uiX, uiY, statusEffects)
+            ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, uiX, uiY, statusEffects)
         }
 
-        mode.drawBackground()
-        mode.drawSprite()
-        mode.drawDescription()
+        mode.draw()
     }
 }

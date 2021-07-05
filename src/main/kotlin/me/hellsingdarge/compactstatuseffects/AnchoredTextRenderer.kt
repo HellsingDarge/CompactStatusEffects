@@ -1,6 +1,5 @@
 package me.hellsingdarge.compactstatuseffects
 
-import net.minecraft.client.MinecraftClient
 import net.minecraft.client.font.TextRenderer
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.render.Tessellator
@@ -8,10 +7,8 @@ import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.util.math.MatrixStack
 import org.lwjgl.opengl.GL11
 
-object TextRendererHelper
+class AnchoredTextRenderer(private val textRenderer: TextRenderer)
 {
-    private val textRenderer: TextRenderer by lazy { MinecraftClient.getInstance().textRenderer }
-
     // same as TextRenderer.draw, but here for completeness
     fun drawLeftAlign(matrixStack: MatrixStack, text: String, xPivot: Float, yPivot: Float, colour: Int = 0xFFFFFF, withShadow: Boolean = false, fontSize: Int = textRenderer.fontHeight)
     {
