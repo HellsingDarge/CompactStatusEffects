@@ -1,6 +1,6 @@
 package me.hellsingdarge.compactstatuseffects.modules
 
-import me.hellsingdarge.compactstatuseffects.TextRendererHelper
+import me.hellsingdarge.compactstatuseffects.AnchoredTextRenderer
 import me.hellsingdarge.compactstatuseffects.Utils
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.util.math.MatrixStack
@@ -11,6 +11,7 @@ import kotlin.math.max
 object HudTimer
 {
     private val mc: MinecraftClient by lazy { MinecraftClient.getInstance() }
+    private val textRenderer by lazy { AnchoredTextRenderer(mc.textRenderer) }
 
     @JvmStatic
     fun draw(matrices: MatrixStack, effects: Collection<StatusEffectInstance>)
@@ -53,7 +54,7 @@ object HudTimer
                     }
                 }
 
-                TextRendererHelper.drawRightAlign(matrices, Utils.effectDurationToStr(inst), k - 3.25f, l - 0.25f, colour = colour, withShadow = true, fontSize = fontSize)
+                textRenderer.drawRightAlign(matrices, Utils.effectDurationToStr(inst), k - 3.25f, l - 0.25f, colour = colour, withShadow = true, fontSize = fontSize)
             }
         }
     }

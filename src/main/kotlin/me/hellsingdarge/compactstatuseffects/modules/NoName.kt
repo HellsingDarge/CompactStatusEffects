@@ -1,65 +1,31 @@
 package me.hellsingdarge.compactstatuseffects.modules
 
-import com.mojang.blaze3d.systems.RenderSystem
-import me.hellsingdarge.compactstatuseffects.TextRendererHelper
 import me.hellsingdarge.compactstatuseffects.Utils
 import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
-class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusEffectInstance>):
-        DrawModule(matrixStack, x, y, effects)
+class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, effects: Iterable<StatusEffectInstance>):
+    DrawModule(matrixStack, uiX, uiY, effects)
 {
-    override val width: Int
-        get() = 33
-    override val height: Int
-        get() = 41
+    override val width: Int get() = 33
+    override val height: Int get() = 41
     override val config = modConfig.noName
-    override val xOffset = width + config.margin - 1
-    override val xDecrement = width - 1
     override val yIncrement = if (!config.squash) height else height - 7
     override val maxNum = config.effectsPerColumn
 
-    override fun drawBackground()
+    override fun draw()
     {
-        textureManager.bindTexture(backgroundTexture)
-        var i = x
-        var j = y
-
-        repeat(effects.count()) { index ->
-            RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
-            drawTexture(matrixStack, i - xOffset, j, 0, 0, width, height)
-
-            i = x - ((index + 1) / maxNum) * xDecrement
-            j += yIncrement
-            if ((index + 1) % maxNum == 0) j = y
+        drawBackground { x, y ->
+            drawTexture(matrixStack, x - xOffset, y, 0, 0, width, height)
         }
-    }
 
-    override fun drawSprite()
-    {
-        var i = x
-        var j = y
-
-        effects.forEachIndexed { index, instance ->
-            val effect = instance.effectType
-            val sprite = spriteManager.getSprite(effect)
-            textureManager.bindTexture(sprite.atlas.id)
-            drawSprite(matrixStack, i + 8 - xOffset, j + 7, zOffset, 18, 18, sprite)
-
-            i = x - ((index + 1) / maxNum) * xDecrement
-            j += yIncrement
-            if ((index + 1) % maxNum == 0) j = y
+        drawSprite { x, y, sprite ->
+            drawSprite(matrixStack, x + 8 - xOffset, y + 7, zOffset, 18, 18, sprite)
         }
-    }
 
-    override fun drawDescription()
-    {
-        var i = x
-        var j = y
-
-        effects.forEachIndexed { index, instance ->
-            TextRendererHelper.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), i + 17f - xOffset, j + 36f, 0x7F7F7F, true)
+        drawDescription { x, y, instance ->
+            textRenderer.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), x + 17f - xOffset, y + 36f, 0x7F7F7F, true)
 
             if (config.showLevel && instance.amplifier in 1..9)
             {
@@ -72,18 +38,14 @@ class NoName(matrixStack: MatrixStack, x: Int, y: Int, effects: Iterable<StatusE
                     I18n.translate("enchantment.level." + (instance.amplifier + 1))
                 }
 
-                TextRendererHelper.drawRightAlign(matrixStack, level, i + 30f - xOffset, j + 27f, withShadow = true)
+                textRenderer.drawRightAlign(matrixStack, level, x + 30f - xOffset, y + 27f, withShadow = true)
             }
 
-            onHover(i, j) { mouseX, mouseY ->
+            onHover(x, y) { mouseX, mouseY ->
                 val effectName = instance.getName()
 
-                TextRendererHelper.drawLeftAlign(matrixStack, effectName, mouseX.toFloat(), mouseY.toFloat(), withShadow = true)
+                textRenderer.drawLeftAlign(matrixStack, effectName, mouseX.toFloat(), mouseY.toFloat(), withShadow = true)
             }
-
-            i = x - ((index + 1) / maxNum) * xDecrement
-            j += yIncrement
-            if ((index + 1) % maxNum == 0) j = y
         }
     }
 }

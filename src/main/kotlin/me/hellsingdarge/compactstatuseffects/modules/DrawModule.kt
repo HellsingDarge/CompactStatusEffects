@@ -1,11 +1,14 @@
 package me.hellsingdarge.compactstatuseffects.modules
 
+import com.mojang.blaze3d.systems.RenderSystem
+import me.hellsingdarge.compactstatuseffects.AnchoredTextRenderer
 import me.hellsingdarge.compactstatuseffects.config.IConfigCommon
 import me.hellsingdarge.compactstatuseffects.config.ModConfig
 import me.shedaniel.autoconfig.AutoConfig
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.resource.language.I18n
+import net.minecraft.client.texture.Sprite
 import net.minecraft.client.texture.StatusEffectSpriteManager
 import net.minecraft.client.texture.TextureManager
 import net.minecraft.client.util.math.MatrixStack
@@ -14,34 +17,77 @@ import net.minecraft.util.Identifier
 
 abstract class DrawModule(
     protected val matrixStack: MatrixStack,
-    protected val x: Int,
-    protected val y: Int,
+    protected val uiX: Int,
+    protected val uiY: Int,
     protected val effects: Iterable<StatusEffectInstance>
 ): DrawableHelper()
 {
-    protected abstract val width: Int
-    protected abstract val height: Int
-    protected abstract val config: IConfigCommon
-    protected abstract val xOffset: Int
-    protected abstract val xDecrement: Int
-    protected abstract val yIncrement: Int
-    protected abstract val maxNum: Int
+    protected val xOffset: Int get() = width + config.margin - 1
+    protected val xDecrement: Int get() = width - 1
 
     protected val modConfig: ModConfig = AutoConfig.getConfigHolder(ModConfig::class.java).config
     protected val backgroundTexture = Identifier("compactstatuseffects:textures/atlas.png")
     protected val spriteManager: StatusEffectSpriteManager = mc.statusEffectSpriteManager
     protected val textureManager: TextureManager = mc.textureManager
+    protected val textRenderer = AnchoredTextRenderer(mc.textRenderer)
 
-    open fun drawBackground()
+    protected abstract val width: Int
+    protected abstract val height: Int
+    protected abstract val config: IConfigCommon
+    protected abstract val yIncrement: Int
+    protected abstract val maxNum: Int
+
+    open fun draw()
     {
     }
 
-    open fun drawSprite()
+    protected inline fun drawBackground(body: (x: Int, y: Int) -> Unit)
     {
+        textureManager.bindTexture(backgroundTexture)
+        var i = uiX
+        var j = uiY
+
+        repeat(effects.count()) { index ->
+            RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
+
+            body(i, j)
+
+            i = uiX - ((index + 1) / maxNum) * xDecrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = uiY
+        }
     }
 
-    open fun drawDescription()
+    protected inline fun drawSprite(body: (x: Int, y: Int, sprite: Sprite) -> Unit)
     {
+        var i = uiX
+        var j = uiY
+
+        effects.forEachIndexed { index, instance ->
+            val effect = instance.effectType
+            val sprite = spriteManager.getSprite(effect)
+            textureManager.bindTexture(sprite.atlas.id)
+
+            body(i, j, sprite)
+
+            i = uiX - ((index + 1) / maxNum) * xDecrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = uiY
+        }
+    }
+
+    protected inline fun drawDescription(body: (x: Int, y: Int, instance: StatusEffectInstance) -> Unit)
+    {
+        var i = uiX
+        var j = uiY
+
+        effects.forEachIndexed { index, instance ->
+            body(i, j, instance)
+
+            i = uiX - ((index + 1) / maxNum) * xDecrement
+            j += yIncrement
+            if ((index + 1) % maxNum == 0) j = uiY
+        }
     }
 
     protected fun StatusEffectInstance.getName(): String
@@ -70,6 +116,6 @@ abstract class DrawModule(
 
     companion object
     {
-        val mc: MinecraftClient = MinecraftClient.getInstance()
+        val mc: MinecraftClient by lazy { MinecraftClient.getInstance() }
     }
 }
