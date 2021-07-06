@@ -27,11 +27,13 @@ class ModConfig: ConfigData, ModMenuApi
     @ConfigEntry.Gui.CollapsibleObject
     val noSprite = NoSpriteConfig()
 
-    enum class Module
+    enum class Module(val str: String)
     {
-        NO_NAME,
-        NO_SPRITE,
-        ONLY_NAME,
+        NO_NAME("NO NAME"),
+        NO_SPRITE("NO SPRITE"),
+        ONLY_NAME("ONLY NAME");
+
+        override fun toString() = str
     }
 
     class NoSpriteConfig: ConfigData, IConfigCommon
