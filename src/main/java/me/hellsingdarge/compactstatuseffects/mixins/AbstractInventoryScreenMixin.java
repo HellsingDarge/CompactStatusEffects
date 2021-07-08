@@ -19,6 +19,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 
+@SuppressWarnings("rawtypes")
 @Mixin(AbstractInventoryScreen.class)
 public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> extends HandledScreen<T>
 {
@@ -38,18 +39,22 @@ public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> exte
     void redirectOffset(AbstractInventoryScreen abstractInventoryScreen, int value)
     {
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-        switch (config.getModule())
+        ModConfig.Module module = config.getModule();
+
+        if (module == null)
         {
-            case NO_NAME:
-                this.x = (this.width - this.backgroundWidth) / 2 + config.getNoName().getUiOffset() * 20;
-                break;
-            case NO_SPRITE:
-                this.x = (this.width - this.backgroundWidth) / 2 + config.getNoSprite().getUiOffset() * 20;
-                break;
-            case ONLY_NAME:
-                this.x = (this.width - this.backgroundWidth) / 2 + config.getOnlyName().getUiOffset() * 20;
-                break;
+            // Sometimes it's null???
+            module = ModConfig.Module.NO_NAME;
         }
+
+        int offset = switch (module)
+                {
+                    case NO_NAME -> config.getNoName().getUiOffset() * 20;
+                    case NO_SPRITE -> config.getNoSprite().getUiOffset() * 20;
+                    case ONLY_NAME -> config.getOnlyName().getUiOffset() * 20;
+                };
+
+        this.x = (this.width - this.backgroundWidth) / 2 + offset;
     }
 
     @Inject(method = "drawStatusEffectSprites", at = @At("HEAD"), cancellable = true)

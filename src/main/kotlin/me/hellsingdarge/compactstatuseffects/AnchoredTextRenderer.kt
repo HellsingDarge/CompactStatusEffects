@@ -5,7 +5,6 @@ import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.render.Tessellator
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.util.math.MatrixStack
-import org.lwjgl.opengl.GL11
 
 class AnchoredTextRenderer(private val textRenderer: TextRenderer)
 {
@@ -52,10 +51,10 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
         drawAnchor(matrixStack, xPivot, yPivot, 0xFFFFFF)
 
         val fontScale = fontSize / textRenderer.fontHeight.toFloat()
-        GL11.glPushMatrix()
-        GL11.glScalef(fontScale, fontScale, fontScale)
-
         val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
+
+        matrixStack.push()
+        matrixStack.scale(fontScale, fontScale, 1f)
 
         textRenderer.draw(
             text,
@@ -71,6 +70,7 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
             textRenderer.isRightToLeft
         )
         vertexConsumer.draw()
-        GL11.glPopMatrix()
+
+        matrixStack.pop()
     }
 }

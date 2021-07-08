@@ -4,8 +4,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
 }
 
 val jarBaseName: String by project
@@ -60,6 +60,7 @@ tasks.named<ProcessResources>("processResources") {
 tasks.named<JavaCompile>("compileJava") {
     dependsOn(fillVersions)
     options.encoding = "UTF-8"
+    options.release.set(16)
 }
 
 tasks.named<Jar>("jar") {
@@ -68,7 +69,7 @@ tasks.named<Jar>("jar") {
 }
 
 tasks.named<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>("compileKotlin") {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_16.toString()
 }
 
 val mainSourceSet: SourceSet = the<SourceSetContainer>()["main"]

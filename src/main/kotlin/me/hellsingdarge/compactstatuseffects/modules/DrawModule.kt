@@ -10,7 +10,6 @@ import net.minecraft.client.gui.DrawableHelper
 import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.texture.Sprite
 import net.minecraft.client.texture.StatusEffectSpriteManager
-import net.minecraft.client.texture.TextureManager
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.util.Identifier
@@ -28,7 +27,6 @@ abstract class DrawModule(
     protected val modConfig: ModConfig = AutoConfig.getConfigHolder(ModConfig::class.java).config
     protected val backgroundTexture = Identifier("compactstatuseffects:textures/atlas.png")
     protected val spriteManager: StatusEffectSpriteManager = mc.statusEffectSpriteManager
-    protected val textureManager: TextureManager = mc.textureManager
     protected val textRenderer = AnchoredTextRenderer(mc.textRenderer)
 
     protected abstract val width: Int
@@ -43,12 +41,12 @@ abstract class DrawModule(
 
     protected inline fun drawBackground(body: (x: Int, y: Int) -> Unit)
     {
-        textureManager.bindTexture(backgroundTexture)
+        RenderSystem.setShaderTexture(0, backgroundTexture)
         var i = uiX
         var j = uiY
 
         repeat(effects.count()) { index ->
-            RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F)
+            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F)
 
             body(i, j)
 
@@ -66,7 +64,7 @@ abstract class DrawModule(
         effects.forEachIndexed { index, instance ->
             val effect = instance.effectType
             val sprite = spriteManager.getSprite(effect)
-            textureManager.bindTexture(sprite.atlas.id)
+            RenderSystem.setShaderTexture(0, sprite.atlas.id)
 
             body(i, j, sprite)
 

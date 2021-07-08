@@ -41,7 +41,7 @@
   "depends": {
     "fabric-language-kotlin": ">=${fabric_kotlin_ver}",
     "cloth-config2": ">=${cloth_ver}",
-    "minecraft": "=${minecraft_ver}"
+    "minecraft": ">=${minecraft_ver}"
   },
   
   "suggests": {
