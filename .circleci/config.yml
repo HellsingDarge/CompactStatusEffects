@@ -1,49 +1,23 @@
 version: 2.1
 
-commands:
-  compile_project:
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:16.0.1
+        auth:
+          username: $DOCKERHUB_ID
+          password: $DOCKERHUB_PASS
     steps:
       - checkout
       - restore_cache:
           keys:
+            - v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "gradle.properties" }}
             - v1-dependencies-{{ checksum "build.gradle.kts" }}
             - v1-dependencies-
 
-      - run: ./gradlew dependencies
+      - run: ./gradlew build
 
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
-
-      - run: ./gradlew build
-
-jobs:
-  "java-8":
-    docker:
-      - image: circleci/openjdk:8-jdk
-        auth:
-          username: $DOCKERHUB_ID
-          password: $DOCKERHUB_PASS
-
-    steps:
-      - compile_project
-
-  "java-11":
-    docker:
-      - image: circleci/openjdk:11-jdk
-        auth:
-          username: $DOCKERHUB_ID
-          password: $DOCKERHUB_PASS
-    steps:
-      - compile_project
-
-
-workflows:
-  version: 2.1
-  build:
-    jobs:
-      - "java-8":
-          context: dockerhub
-      - "java-11":
-          context: dockerhub
+          key: v1-dependencies-{{ checksum "build.gradle.kts" }}-{{ checksum "gradle.properties" }}
