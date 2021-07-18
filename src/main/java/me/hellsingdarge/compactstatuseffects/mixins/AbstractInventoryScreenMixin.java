@@ -41,12 +41,6 @@ public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> exte
         ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
         ModConfig.Module module = config.getModule();
 
-        if (module == null)
-        {
-            // Sometimes it's null???
-            module = ModConfig.Module.NO_NAME;
-        }
-
         int offset = switch (module)
                 {
                     case NO_NAME -> config.getNoName().getUiOffset() * 20;

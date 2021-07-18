@@ -1,20 +1,12 @@
 package me.hellsingdarge.compactstatuseffects.config
 
-import com.terraformersmc.modmenu.api.ConfigScreenFactory
-import com.terraformersmc.modmenu.api.ModMenuApi
-import me.shedaniel.autoconfig.AutoConfig
 import me.shedaniel.autoconfig.ConfigData
 import me.shedaniel.autoconfig.annotation.Config
 import me.shedaniel.autoconfig.annotation.ConfigEntry
 
 @Config(name = "compactstatuseffects")
-class ModConfig: ConfigData, ModMenuApi
+class ModConfig: ConfigData
 {
-    override fun getModConfigScreenFactory(): ConfigScreenFactory<*>
-    {
-        return ConfigScreenFactory { parent -> AutoConfig.getConfigScreen(this::class.java, parent).get() }
-    }
-
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     val module: Module = Module.NO_NAME
 
@@ -32,8 +24,6 @@ class ModConfig: ConfigData, ModMenuApi
         NO_NAME,
         NO_SPRITE,
         ONLY_NAME;
-
-        override fun toString() = name.replace("_", " ")
     }
 
     class NoSpriteConfig: ConfigData, IConfigCommon

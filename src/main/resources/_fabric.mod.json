@@ -29,7 +29,7 @@
     "modmenu": [
       {
         "adapter": "kotlin",
-        "value": "me.hellsingdarge.compactstatuseffects.config.ModConfig"
+        "value": "me.hellsingdarge.compactstatuseffects.config.ModMenuIntegration"
       }
     ]
   },

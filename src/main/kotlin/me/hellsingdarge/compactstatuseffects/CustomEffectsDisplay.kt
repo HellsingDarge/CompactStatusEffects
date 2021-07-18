@@ -18,10 +18,7 @@ class CustomEffectsDisplay(
 {
     fun draw()
     {
-        // Something fucky is with AutoConfig for it to produce nulls
-        val module = AutoConfig.getConfigHolder(ModConfig::class.java).config.module ?: ModConfig.Module.NO_NAME
-
-        val mode: DrawModule = when (module)
+        val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
         {
             ModConfig.Module.NO_NAME -> NoName(matrixStack, uiX, uiY, statusEffects)
             ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, uiX, uiY, statusEffects)
