@@ -4,8 +4,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 val jarBaseName: String by project
@@ -37,6 +37,7 @@ dependencies {
     mappings("net.fabricmc:yarn:$yarnMappings:v2")
 
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.44.0+1.18") // In case any mods pulls in incompatible Fabric version during dev
 
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
     modImplementation("com.terraformersmc:modmenu:$modMenuVersion")
@@ -60,7 +61,7 @@ tasks.named<ProcessResources>("processResources") {
 tasks.named<JavaCompile>("compileJava") {
     dependsOn(fillVersions)
     options.encoding = "UTF-8"
-    options.release.set(16)
+    options.release.set(17)
 }
 
 tasks.named<Jar>("jar") {
@@ -69,7 +70,7 @@ tasks.named<Jar>("jar") {
 }
 
 tasks.named<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>("compileKotlin") {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_16.toString()
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
 }
 
 val mainSourceSet: SourceSet = the<SourceSetContainer>()["main"]

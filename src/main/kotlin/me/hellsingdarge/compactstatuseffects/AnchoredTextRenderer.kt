@@ -62,7 +62,7 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
             yPivot / fontScale,
             colour,
             withShadow,
-            matrixStack.peek().model,
+            matrixStack.peek().positionMatrix,
             vertexConsumer,
             false,
             0,

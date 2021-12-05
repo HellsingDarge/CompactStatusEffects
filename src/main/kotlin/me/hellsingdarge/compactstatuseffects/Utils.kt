@@ -1,7 +1,7 @@
 package me.hellsingdarge.compactstatuseffects
 
 import net.minecraft.entity.effect.StatusEffectInstance
-import net.minecraft.util.ChatUtil
+import net.minecraft.util.StringHelper
 import net.minecraft.util.math.MathHelper
 
 object Utils
@@ -15,7 +15,7 @@ object Utils
         else
         {
             val i = MathHelper.floor(effect.duration.toFloat())
-            ChatUtil.ticksToString(i)
+            StringHelper.formatTicks(i)
         }
     }
 }
