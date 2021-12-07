@@ -14,10 +14,10 @@ class ModConfig: ConfigData
     val noName = NoNameConfig()
 
     @ConfigEntry.Gui.CollapsibleObject
-    val onlyName = OnlyNameConfig()
+    val noSprite = NoSpriteConfig()
 
     @ConfigEntry.Gui.CollapsibleObject
-    val noSprite = NoSpriteConfig()
+    val onlyName = OnlyNameConfig()
 
     enum class Module
     {
@@ -31,8 +31,9 @@ class ModConfig: ConfigData
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
         override val uiOffset: Int = 0
 
-        @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
         override val margin: Int = 10
+            get() = field * 2
 
         override val squash: Boolean = false
 
@@ -49,8 +50,9 @@ class ModConfig: ConfigData
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
         override val uiOffset: Int = 0
 
-        @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
         override val margin: Int = 10
+            get() = field * 2
 
         override val squash: Boolean = false
 
@@ -70,8 +72,9 @@ class ModConfig: ConfigData
         @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
         override val uiOffset: Int = 0
 
-        @ConfigEntry.BoundedDiscrete(min = 0, max = 20)
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
         override val margin: Int = 10
+            get() = field * 2
 
         @ConfigEntry.BoundedDiscrete(min = 1, max = 15)
         override val effectsPerColumn: Int = 8
