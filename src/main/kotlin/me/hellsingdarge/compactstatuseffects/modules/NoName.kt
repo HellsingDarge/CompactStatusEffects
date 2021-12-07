@@ -5,8 +5,8 @@ import net.minecraft.client.resource.language.I18n
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
-class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, effects: Iterable<StatusEffectInstance>):
-    DrawModule(matrixStack, uiX, uiY, effects)
+class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects: Iterable<StatusEffectInstance>):
+    DrawModule(matrixStack, uiX, uiY, bgWidth, effects)
 {
     override val width: Int get() = 33
     override val height: Int get() = 41

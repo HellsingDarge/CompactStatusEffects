@@ -16,13 +16,27 @@ import net.minecraft.util.Identifier
 
 abstract class DrawModule(
     protected val matrixStack: MatrixStack,
-    protected val uiX: Int,
+    uiX: Int,
     protected val uiY: Int,
+    protected val bgWidth: Int,
     protected val effects: Iterable<StatusEffectInstance>
 ): DrawableHelper()
 {
-    protected val xOffset: Int get() = width + config.margin - 1
-    protected val xDecrement: Int get() = width - 1
+    protected val uiX = uiX
+        get() = if (config.oldSide) field - bgWidth - 2 else field - width - 2
+
+    protected val xOffset: Int
+        get()
+        {
+            val ret = width + config.margin - 1
+            return if (config.oldSide) ret else -ret
+        }
+    protected val xDecrement: Int
+        get()
+        {
+            val ret = width - 1
+            return if (config.oldSide) ret else -ret
+        }
 
     protected val modConfig: ModConfig = AutoConfig.getConfigHolder(ModConfig::class.java).config
     protected val backgroundTexture = Identifier("compactstatuseffects:textures/atlas.png")

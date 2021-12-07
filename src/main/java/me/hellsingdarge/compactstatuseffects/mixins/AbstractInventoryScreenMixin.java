@@ -32,9 +32,9 @@ public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> exte
                     target = "Lnet/minecraft/client/gui/screen/ingame/AbstractInventoryScreen;drawStatusEffectBackgrounds(Lnet/minecraft/client/util/math/MatrixStack;IILjava/lang/Iterable;Z)V"
             )
     )
-    void redirectDrawBackground(AbstractInventoryScreen ais, MatrixStack matrixStack, int x, int y, Iterable<StatusEffectInstance> effects, boolean wide)
+    void redirectDrawBackground(AbstractInventoryScreen ais, MatrixStack matrixStack, int x, int height, Iterable<StatusEffectInstance> effects, boolean wide)
     {
-        CustomEffectsDisplay customEffectsDisplay = new CustomEffectsDisplay(matrixStack, x, y, effects);
+        CustomEffectsDisplay customEffectsDisplay = new CustomEffectsDisplay(matrixStack, x, this.y, this.backgroundWidth, effects);
         customEffectsDisplay.draw();
     }
 

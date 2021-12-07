@@ -39,6 +39,9 @@ class ModConfig: ConfigData
         @ConfigEntry.Gui.Tooltip
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         override val effectsPerColumn: Int = 5
+
+        @ConfigEntry.Gui.Tooltip
+        override val oldSide: Boolean = true
     }
 
     class NoNameConfig: ConfigData, IConfigCommon
@@ -55,6 +58,9 @@ class ModConfig: ConfigData
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         override val effectsPerColumn: Int = 4
 
+        @ConfigEntry.Gui.Tooltip
+        override val oldSide: Boolean = true
+
         val showLevel: Boolean = true
         val levelInArabic: Boolean = false
     }
@@ -69,6 +75,9 @@ class ModConfig: ConfigData
 
         @ConfigEntry.BoundedDiscrete(min = 1, max = 15)
         override val effectsPerColumn: Int = 8
+
+        @ConfigEntry.Gui.Tooltip
+        override val oldSide: Boolean = true
 
         override val squash: Boolean = false
 

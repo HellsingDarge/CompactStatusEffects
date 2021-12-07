@@ -13,6 +13,7 @@ class CustomEffectsDisplay(
     private val matrixStack: MatrixStack,
     private val uiX: Int,
     private val uiY: Int,
+    private val backgroundWidth: Int,
     private val statusEffects: Iterable<StatusEffectInstance>
 )
 {
@@ -20,9 +21,9 @@ class CustomEffectsDisplay(
     {
         val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
         {
-            ModConfig.Module.NO_NAME -> NoName(matrixStack, uiX, uiY, statusEffects)
-            ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, uiX, uiY, statusEffects)
-            ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, uiX, uiY, statusEffects)
+            ModConfig.Module.NO_NAME -> NoName(matrixStack, uiX, uiY, backgroundWidth, statusEffects)
+            ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, uiX, uiY, backgroundWidth, statusEffects)
+            ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, uiX, uiY, backgroundWidth, statusEffects)
         }
 
         mode.draw()
