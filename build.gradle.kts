@@ -44,6 +44,14 @@ dependencies {
     modApi("me.shedaniel.cloth:cloth-config-fabric:$clothVersion") {
         exclude(module = "net.fabricmc.fabric-api")
     }
+    modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:7.0.346")
+    modRuntimeOnly("me.shedaniel:RoughlyEnoughItems-fabric:7.0.346")
+}
+
+val mainSourceSet: SourceSet = the<SourceSetContainer>()["main"]
+
+loom {
+    accessWidenerPath.set(mainSourceSet.resources.first { it.name == "compactstatuseffects.accessWidener" })
 }
 
 tasks.named<ProcessResources>("processResources") {
@@ -72,8 +80,6 @@ tasks.named<Jar>("jar") {
 tasks.named<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>("compileKotlin") {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
 }
-
-val mainSourceSet: SourceSet = the<SourceSetContainer>()["main"]
 
 val fillVersions = tasks.register<Copy>("fillVersions") {
     inputs.file("gradle.properties")

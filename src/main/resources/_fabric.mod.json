@@ -25,11 +25,16 @@
         "value": "me.hellsingdarge.compactstatuseffects.CompactStatusEffects"
       }
     ],
-  
     "modmenu": [
       {
         "adapter": "kotlin",
         "value": "me.hellsingdarge.compactstatuseffects.config.ModMenuIntegration"
+      }
+    ],
+    "rei": [
+      {
+        "adapter": "kotlin",
+        "value": "me.hellsingdarge.compactstatuseffects.StatusEffectsExclusions"
       }
     ]
   },
@@ -37,6 +42,8 @@
   "mixins": [
     "compactstatuseffects.mixins.json"
   ],
+  
+  "accessWidener": "compactstatuseffects.accessWidener",
   
   "depends": {
     "fabric-language-kotlin": ">=${fabric_kotlin_ver}",

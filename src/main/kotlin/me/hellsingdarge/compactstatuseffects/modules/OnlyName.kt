@@ -7,8 +7,8 @@ import net.minecraft.entity.effect.StatusEffectInstance
 class OnlyName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects: Iterable<StatusEffectInstance>):
     DrawModule(matrixStack, uiX, uiY, bgWidth, effects)
 {
-    override val width: Int get() = 100
-    override val height: Int get() = 19
+    override val width: Int get() = Constants.OnlyName.width
+    override val height: Int get() = Constants.OnlyName.height
     override val config = modConfig.onlyName
     override val yIncrement = if (!config.squash) height else height - 5
     override val maxNum = if (!config.squash) config.effectsPerColumn else config.effectsPerColumn + 3

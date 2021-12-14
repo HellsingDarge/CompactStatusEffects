@@ -7,8 +7,8 @@ import net.minecraft.entity.effect.StatusEffectInstance
 class NoSprite(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects: Iterable<StatusEffectInstance>):
     DrawModule(matrixStack, uiX, uiY, bgWidth, effects)
 {
-    override val width: Int get() = 100
-    override val height: Int get() = 31
+    override val width: Int get() = Constants.NoSprite.width
+    override val height: Int get() = Constants.NoSprite.height
     override val config = modConfig.noSprite
     override val yIncrement = if (!config.squash) height else height - 7
     override val maxNum = if (!config.squash) config.effectsPerColumn else config.effectsPerColumn + 1
