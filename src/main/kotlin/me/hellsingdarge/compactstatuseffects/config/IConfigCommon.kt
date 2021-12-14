@@ -5,5 +5,5 @@ interface IConfigCommon
     val margin: Int
     val effectsPerColumn: Int
     val squash: Boolean
-    val oldSide: Boolean
+    val leftSide: Boolean
 }

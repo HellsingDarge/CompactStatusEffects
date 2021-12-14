@@ -23,7 +23,7 @@ class StatusEffectsExclusions: REIClientPlugin
                 ModConfig.Module.NO_SPRITE -> Pair(config.noSprite, Constants.NoSprite)
                 ModConfig.Module.ONLY_NAME -> Pair(config.onlyName, Constants.OnlyName)
             }
-            if (module.oldSide)
+            if (module.leftSide)
                 return@register emptyList()
 
             val effectsCount = player.statusEffects.size

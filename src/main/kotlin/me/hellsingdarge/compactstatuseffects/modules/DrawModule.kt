@@ -23,19 +23,19 @@ abstract class DrawModule(
 ): DrawableHelper()
 {
     protected val uiX = uiX
-        get() = if (config.oldSide) field - bgWidth - 2 else field - width - 2
+        get() = if (config.leftSide) field - bgWidth - 2 else field - width - 2
 
     protected val xOffset: Int
         get()
         {
             val ret = width + config.margin - 1
-            return if (config.oldSide) ret else -ret
+            return if (config.leftSide) ret else -ret
         }
     protected val xDecrement: Int
         get()
         {
             val ret = width - 1
-            return if (config.oldSide) ret else -ret
+            return if (config.leftSide) ret else -ret
         }
 
     protected val modConfig: ModConfig = AutoConfig.getConfigHolder(ModConfig::class.java).config

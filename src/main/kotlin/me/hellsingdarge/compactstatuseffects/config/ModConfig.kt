@@ -39,7 +39,7 @@ class ModConfig: ConfigData
         override val effectsPerColumn: Int = 5
 
         @ConfigEntry.Gui.Tooltip
-        override val oldSide: Boolean = true
+        override val leftSide: Boolean = true
     }
 
     class NoNameConfig: ConfigData, IConfigCommon
@@ -55,7 +55,7 @@ class ModConfig: ConfigData
         override val effectsPerColumn: Int = 4
 
         @ConfigEntry.Gui.Tooltip
-        override val oldSide: Boolean = true
+        override val leftSide: Boolean = true
 
         val showLevel: Boolean = true
         val levelInArabic: Boolean = false
@@ -71,7 +71,7 @@ class ModConfig: ConfigData
         override val effectsPerColumn: Int = 8
 
         @ConfigEntry.Gui.Tooltip
-        override val oldSide: Boolean = true
+        override val leftSide: Boolean = true
 
         override val squash: Boolean = false
 
