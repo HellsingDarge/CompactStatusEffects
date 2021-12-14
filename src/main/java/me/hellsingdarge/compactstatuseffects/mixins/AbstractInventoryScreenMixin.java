@@ -4,8 +4,11 @@ package me.hellsingdarge.compactstatuseffects.mixins;
 import me.hellsingdarge.compactstatuseffects.CustomEffectsDisplay;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
@@ -48,5 +51,18 @@ public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> exte
     void onDrawDescriptions(MatrixStack matrixStack, int i, int j, Iterable<StatusEffectInstance> iterable, CallbackInfo ci)
     {
         ci.cancel();
+    }
+
+    @ModifyConstant(
+            method = "drawStatusEffects",
+            constant = @Constant(intValue = 33),
+            slice = @Slice(from = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/screen/ingame/AbstractInventoryScreen;drawStatusEffectSprites(Lnet/minecraft/client/util/math/MatrixStack;IILjava/lang/Iterable;Z)V"
+            ))
+    )
+    int onDrawDescriptionNarrow(int constant)
+    {
+        return -100000;
     }
 }
