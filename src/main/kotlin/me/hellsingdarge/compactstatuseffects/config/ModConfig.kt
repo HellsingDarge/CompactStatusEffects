@@ -28,9 +28,6 @@ class ModConfig: ConfigData
 
     class NoSpriteConfig: ConfigData, IConfigCommon
     {
-        @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
-        override val uiOffset: Int = 0
-
         @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
         override val margin: Int = 10
             get() = field * 2
@@ -47,9 +44,6 @@ class ModConfig: ConfigData
 
     class NoNameConfig: ConfigData, IConfigCommon
     {
-        @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
-        override val uiOffset: Int = 0
-
         @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
         override val margin: Int = 10
             get() = field * 2
@@ -69,9 +63,6 @@ class ModConfig: ConfigData
 
     class OnlyNameConfig: ConfigData, IConfigCommon
     {
-        @ConfigEntry.BoundedDiscrete(min = -3, max = 2)
-        override val uiOffset: Int = 0
-
         @ConfigEntry.BoundedDiscrete(min = 0, max = 10)
         override val margin: Int = 10
             get() = field * 2
