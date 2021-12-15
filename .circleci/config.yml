@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/openjdk:16.0.1
+      - image: cimg/openjdk:17.0.1
         auth:
           username: $DOCKERHUB_ID
           password: $DOCKERHUB_PASS
