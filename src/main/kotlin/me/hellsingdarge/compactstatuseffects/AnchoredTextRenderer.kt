@@ -63,7 +63,7 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
 
     fun drawAnchor(matrixStack: MatrixStack, x: Float, y: Float, colour: Int)
     {
-        if (true)
+        if (false)
         {
             val size = 1
             val length = 5
@@ -79,12 +79,13 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
             val mouseY = mouse.y * mc.window.scaledHeight / mc.window.height
 
             if (mouseX in (x - length)..(x + length) && mouseY in (y - length)..(y + length))
-                drawCoords(matrixStack, x - length - 1, y + length + 1, 0xAAAAAA, 5)
+                drawCoords(matrixStack, x - length - 1, y + length + 1)
         }
     }
 
-    private fun drawCoords(matrixStack: MatrixStack, x: Float, y: Float, colour: Int, fontSize: Int)
+    private fun drawCoords(matrixStack: MatrixStack, x: Float, y: Float)
     {
+        val fontSize = 5
         val fontScale = fontSize / textRenderer.fontHeight.toFloat()
         val text = "(%.1f, %.1f)".format(x, y)
         val xPos = x - textRenderer.getWidth(text) * fontSize / textRenderer.fontHeight
@@ -95,7 +96,7 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
             text,
             xPos / fontScale,
             y / fontScale,
-            colour,
+            0xAAAAAA,
             true,
             matrixStack.peek().positionMatrix,
             vertexConsumer,
