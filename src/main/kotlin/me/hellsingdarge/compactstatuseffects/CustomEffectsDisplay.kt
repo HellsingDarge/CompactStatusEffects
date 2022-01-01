@@ -13,7 +13,12 @@ class CustomEffectsDisplay
 {
     fun draw(matrixStack: MatrixStack, uiX: Int, uiY: Int, backgroundWidth: Int, statusEffects: Iterable<StatusEffectInstance>, isRecipeBookOpen: Boolean)
     {
-        val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
+        val config = AutoConfig.getConfigHolder(ModConfig::class.java).config
+
+        if (config.disableInventoryListing)
+            return
+
+        val mode: DrawModule = when (config.module)
         {
             ModConfig.Module.NO_NAME -> NoName(matrixStack, uiX, uiY, backgroundWidth, statusEffects, isRecipeBookOpen)
             ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, uiX, uiY, backgroundWidth, statusEffects, isRecipeBookOpen)

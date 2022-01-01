@@ -2,6 +2,8 @@
   "text.autoconfig.compactstatuseffects.title": "Compact Status Effects config",
   
   "text.autoconfig.compactstatuseffects.option.module": "Effect display module to use",
+  "text.autoconfig.compactstatuseffects.option.disableInventoryEffects": "Disable effects listing in inventory",
+  "text.autoconfig.compactstatuseffects.option.disableInventoryEffects.@Tooltip": "This leaves only the main hud to display them",
   
   "text.autoconfig.compactstatuseffects.option.noName": "No Name display config",
   

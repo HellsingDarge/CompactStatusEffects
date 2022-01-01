@@ -10,6 +10,9 @@ class ModConfig: ConfigData
     @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
     val module: Module = Module.NO_NAME
 
+    @ConfigEntry.Gui.Tooltip
+    val disableInventoryListing: Boolean = false
+
     @ConfigEntry.Gui.CollapsibleObject
     val noName = NoNameConfig()
 

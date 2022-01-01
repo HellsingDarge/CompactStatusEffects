@@ -17,6 +17,9 @@ class StatusEffectsExclusions: REIClientPlugin
     override fun registerExclusionZones(zones: ExclusionZones)
     {
         zones.register(AbstractInventoryScreen::class.java) { screen ->
+            if (config.disableInventoryListing)
+                return@register emptyList()
+
             val (module, pair) = when (config.module)
             {
                 ModConfig.Module.NO_NAME -> Pair(config.noName, Constants.NoName)
