@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerInventory;
@@ -37,8 +38,13 @@ public abstract class AbstractInventoryScreenMixin<T extends ScreenHandler> exte
     )
     void redirectDrawBackground(AbstractInventoryScreen ais, MatrixStack matrixStack, int x, int height, Iterable<StatusEffectInstance> effects, boolean wide)
     {
-        CustomEffectsDisplay customEffectsDisplay = new CustomEffectsDisplay(matrixStack, x, this.y, this.backgroundWidth, effects);
-        customEffectsDisplay.draw();
+        boolean isRecipeBookOpen = false;
+        if (ais instanceof InventoryScreen)
+        {
+            isRecipeBookOpen = ((InventoryScreen) ais).getRecipeBookWidget().isOpen();
+        }
+        CustomEffectsDisplay customEffectsDisplay = new CustomEffectsDisplay();
+        customEffectsDisplay.draw(matrixStack, x, this.y, this.backgroundWidth, effects, isRecipeBookOpen);
     }
 
     @Inject(method = "drawStatusEffectSprites", at = @At("HEAD"), cancellable = true)

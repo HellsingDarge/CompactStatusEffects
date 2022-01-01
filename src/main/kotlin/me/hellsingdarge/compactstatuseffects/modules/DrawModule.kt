@@ -19,11 +19,26 @@ abstract class DrawModule(
     uiX: Int,
     protected val uiY: Int,
     protected val bgWidth: Int,
-    protected val effects: Iterable<StatusEffectInstance>
+    protected val effects: Iterable<StatusEffectInstance>,
+    private val isRecipeBookOpen: Boolean
 ): DrawableHelper()
 {
     protected val uiX = uiX
-        get() = if (config.leftSide) field - bgWidth - 2 else field - width - 2
+        get() = if (config.leftSide)
+        {
+            if (isRecipeBookOpen)
+            {
+                field - bgWidth - 200 - 2 + 20
+            }
+            else
+            {
+                field - bgWidth - 2
+            }
+        }
+        else
+        {
+            field - width - 2
+        }
 
     protected val xOffset: Int
         get()
@@ -31,6 +46,7 @@ abstract class DrawModule(
             val ret = width + config.margin - 1
             return if (config.leftSide) ret else -ret
         }
+
     protected val xDecrement: Int
         get()
         {

@@ -4,8 +4,8 @@ import me.hellsingdarge.compactstatuseffects.Utils
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
-class OnlyName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects: Iterable<StatusEffectInstance>):
-    DrawModule(matrixStack, uiX, uiY, bgWidth, effects)
+class OnlyName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects: Iterable<StatusEffectInstance>, isRecipeBookOpen: Boolean):
+    DrawModule(matrixStack, uiX, uiY, bgWidth, effects, isRecipeBookOpen)
 {
     override val width: Int get() = Constants.OnlyName.width
     override val height: Int get() = Constants.OnlyName.height

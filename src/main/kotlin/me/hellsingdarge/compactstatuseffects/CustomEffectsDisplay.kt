@@ -9,21 +9,15 @@ import me.shedaniel.autoconfig.AutoConfig
 import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.effect.StatusEffectInstance
 
-class CustomEffectsDisplay(
-    private val matrixStack: MatrixStack,
-    private val uiX: Int,
-    private val uiY: Int,
-    private val backgroundWidth: Int,
-    private val statusEffects: Iterable<StatusEffectInstance>
-)
+class CustomEffectsDisplay
 {
-    fun draw()
+    fun draw(matrixStack: MatrixStack, uiX: Int, uiY: Int, backgroundWidth: Int, statusEffects: Iterable<StatusEffectInstance>, isRecipeBookOpen: Boolean)
     {
         val mode: DrawModule = when (AutoConfig.getConfigHolder(ModConfig::class.java).config.module)
         {
-            ModConfig.Module.NO_NAME -> NoName(matrixStack, uiX, uiY, backgroundWidth, statusEffects)
-            ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, uiX, uiY, backgroundWidth, statusEffects)
-            ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, uiX, uiY, backgroundWidth, statusEffects)
+            ModConfig.Module.NO_NAME -> NoName(matrixStack, uiX, uiY, backgroundWidth, statusEffects, isRecipeBookOpen)
+            ModConfig.Module.NO_SPRITE -> NoSprite(matrixStack, uiX, uiY, backgroundWidth, statusEffects, isRecipeBookOpen)
+            ModConfig.Module.ONLY_NAME -> OnlyName(matrixStack, uiX, uiY, backgroundWidth, statusEffects, isRecipeBookOpen)
         }
 
         mode.draw()
