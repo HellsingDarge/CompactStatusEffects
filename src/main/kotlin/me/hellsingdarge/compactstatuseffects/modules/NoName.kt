@@ -11,8 +11,8 @@ class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects
     override val width: Int get() = Constants.NoName.width
     override val height: Int get() = Constants.NoName.height
     override val config = modConfig.noName
-    override val yIncrement = if (!config.squash) height else height - 7
-    override val maxNum = config.effectsPerColumn
+    override val yIncrement = if (!config.squash) height else height - 17
+    override val maxNum = if (!config.squash) config.effectsPerColumn else config.effectsPerColumn + 3
 
     override fun draw()
     {
@@ -25,7 +25,10 @@ class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects
         }
 
         drawDescription { x, y, instance ->
-            textRenderer.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), x + 17f - xOffset, y + 36f, 0x7F7F7F, true)
+            if (config.squash)
+                textRenderer.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), x + 17f - xOffset, y + 10f, 0x7F7F7F, true)
+            else
+                textRenderer.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), x + 17f - xOffset, y + 36f, 0x7F7F7F, true)
 
             if (config.showLevel && instance.amplifier in 1..9)
             {
@@ -38,7 +41,10 @@ class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects
                     I18n.translate("enchantment.level." + (instance.amplifier + 1))
                 }
 
-                textRenderer.drawRightAlign(matrixStack, level, x + 30f - xOffset, y + 27f, withShadow = true)
+                if (config.squash)
+                    textRenderer.drawRightAlign(matrixStack, level, x + 30f - xOffset, y + 10f, withShadow = true)
+                else
+                    textRenderer.drawRightAlign(matrixStack, level, x + 30f - xOffset, y + 27f, withShadow = true)
             }
 
             onHover(x, y) { mouseX, mouseY ->

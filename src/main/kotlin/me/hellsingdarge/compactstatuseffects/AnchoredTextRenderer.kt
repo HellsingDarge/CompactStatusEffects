@@ -88,7 +88,7 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
         val fontSize = 5
         val fontScale = fontSize / textRenderer.fontHeight.toFloat()
         val text = "(%.1f, %.1f)".format(x, y)
-        val xPos = x - textRenderer.getWidth(text) * fontSize / textRenderer.fontHeight
+        val xPos = x - textRenderer.getWidth(text) * fontScale
         val vertexConsumer = VertexConsumerProvider.immediate(Tessellator.getInstance().buffer)
         matrixStack.push()
         matrixStack.scale(fontScale, fontScale, 1f)
@@ -103,7 +103,7 @@ class AnchoredTextRenderer(private val textRenderer: TextRenderer)
             false,
             0,
             0xF00F0,
-            true
+            false
         )
         vertexConsumer.draw()
         matrixStack.pop()
