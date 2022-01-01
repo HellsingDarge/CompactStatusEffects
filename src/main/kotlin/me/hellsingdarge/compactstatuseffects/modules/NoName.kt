@@ -26,7 +26,7 @@ class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects
 
         drawDescription { x, y, instance ->
             if (config.squash)
-                textRenderer.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), x + 17f - xOffset, y + 10f, 0x7F7F7F, true)
+                textRenderer.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), x + 17f - xOffset, y + 11f, 0x7F7F7F, true)
             else
                 textRenderer.drawCentreAlign(matrixStack, Utils.effectDurationToStr(instance), x + 17f - xOffset, y + 36f, 0x7F7F7F, true)
 
@@ -42,7 +42,7 @@ class NoName(matrixStack: MatrixStack, uiX: Int, uiY: Int, bgWidth: Int, effects
                 }
 
                 if (config.squash)
-                    textRenderer.drawRightAlign(matrixStack, level, x + 30f - xOffset, y + 10f, withShadow = true)
+                    textRenderer.drawRightAlign(matrixStack, level, x + 30f - xOffset, y + 25f, withShadow = true)
                 else
                     textRenderer.drawRightAlign(matrixStack, level, x + 30f - xOffset, y + 27f, withShadow = true)
             }
